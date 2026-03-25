@@ -6,8 +6,10 @@
 #define STORAGE_LEVELDB_INCLUDE_OPTIONS_H_
 
 #include <cstddef>
-
+#include <cstdint>
 #include "leveldb/export.h"
+
+
 
 namespace leveldb {
 
@@ -162,6 +164,8 @@ struct LEVELDB_EXPORT ReadOptions {
   // not have been released).  If "snapshot" is null, use an implicit
   // snapshot of the state at the beginning of this read operation.
   const Snapshot* snapshot = nullptr;
+  uint32_t bw_predicate = 0;
+  char     bw_op        = 0;
 };
 
 // Options that control write operations
