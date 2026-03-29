@@ -15,6 +15,7 @@
 #include "table/format.h"
 #include "util/coding.h"
 #include "util/crc32c.h"
+#include "util/bitweave.h"
 
 namespace leveldb {
 
@@ -46,16 +47,8 @@ struct TableBuilder::Rep {
   int64_t num_entries;
   bool closed;  // Either Finish() or Abandon() has been called.
   FilterBlockBuilder* filter_block;
+  BitWeaveBuilder bw_builder;
 
-  // We do not emit the index entry for a block until we have seen the
-  // first key for the next data block.  This allows us to use shorter
-  // keys in the index block.  For example, consider a block boundary
-  // between the keys "the quick brown fox" and "the who".  We can use
-  // "the r" as the key for the index block entry since it is >= all
-  // entries in the first block and < all entries in subsequent
-  // blocks.
-  //
-  // Invariant: r->pending_index_entry is true only if data_block is empty.
   bool pending_index_entry;
   BlockHandle pending_handle;  // Handle to add to index block
 
@@ -76,15 +69,10 @@ TableBuilder::~TableBuilder() {
 }
 
 Status TableBuilder::ChangeOptions(const Options& options) {
-  // Note: if more fields are added to Options, update
-  // this function to catch changes that should not be allowed to
-  // change in the middle of building a Table.
   if (options.comparator != rep_->options.comparator) {
     return Status::InvalidArgument("changing comparator while building table");
   }
 
-  // Note that any live BlockBuilders point to rep_->options and therefore
-  // will automatically pick up the updated options.
   rep_->options = options;
   rep_->index_block_options = options;
   rep_->index_block_options.block_restart_interval = 1;
@@ -112,10 +100,28 @@ void TableBuilder::Add(const Slice& key, const Slice& value) {
     r->filter_block->AddKey(key);
   }
 
+  // BitWeaving logic
+  uint32_t bw_val = 0;
+  Slice v = value;
+  if (!v.empty()) {
+    uint32_t parsed = 0;
+    bool parse_ok = true;
+    for (size_t i = 0; i < v.size(); i++) {
+      if (v[i] < '0' || v[i] > '9') {
+        parse_ok = false;
+        break;
+      }
+      parsed = parsed * 10 + (v[i] - '0');
+    }
+    if (parse_ok) bw_val = parsed;
+  }
+  r->bw_builder.AddValue(bw_val);
+
   r->last_key.assign(key.data(), key.size());
   r->num_entries++;
   r->data_block.Add(key, value);
 
+  // Check for block size limits
   const size_t estimated_block_size = r->data_block.CurrentSizeEstimate();
   if (estimated_block_size >= r->options.block_size) {
     Flush();
@@ -139,17 +145,13 @@ void TableBuilder::Flush() {
 }
 
 void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
-  // File format contains a sequence of blocks where each block has:
-  //    block_data: uint8[n]
-  //    type: uint8
-  //    crc: uint32
   assert(ok());
   Rep* r = rep_;
   Slice raw = block->Finish();
 
   Slice block_contents;
   CompressionType type = r->options.compression;
-  // TODO(postrelease): Support more compression options: zlib?
+  
   switch (type) {
     case kNoCompression:
       block_contents = raw;
@@ -161,8 +163,6 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
           compressed->size() < raw.size() - (raw.size() / 8u)) {
         block_contents = *compressed;
       } else {
-        // Snappy not supported, or compressed less than 12.5%, so just
-        // store uncompressed form
         block_contents = raw;
         type = kNoCompression;
       }
@@ -176,8 +176,6 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
           compressed->size() < raw.size() - (raw.size() / 8u)) {
         block_contents = *compressed;
       } else {
-        // Zstd not supported, or compressed less than 12.5%, so just
-        // store uncompressed form
         block_contents = raw;
         type = kNoCompression;
       }
@@ -199,7 +197,7 @@ void TableBuilder::WriteRawBlock(const Slice& block_contents,
     char trailer[kBlockTrailerSize];
     trailer[0] = type;
     uint32_t crc = crc32c::Value(block_contents.data(), block_contents.size());
-    crc = crc32c::Extend(crc, trailer, 1);  // Extend crc to cover block type
+    crc = crc32c::Extend(crc, trailer, 1);
     EncodeFixed32(trailer + 1, crc32c::Mask(crc));
     r->status = r->file->Append(Slice(trailer, kBlockTrailerSize));
     if (r->status.ok()) {
@@ -220,15 +218,21 @@ Status TableBuilder::Finish() {
 
   // Write filter block
   if (ok() && r->filter_block != nullptr) {
-    WriteRawBlock(r->filter_block->Finish(), kNoCompression,
-                  &filter_block_handle);
+    WriteRawBlock(r->filter_block->Finish(), kNoCompression, &filter_block_handle);
+  }
+
+  // Write BitWeaving block
+  BlockHandle bw_block_handle;
+  if (ok() && r->bw_builder.NumValues() > 0) {
+    std::string bw_block;
+    r->bw_builder.Finish(&bw_block);
+    WriteRawBlock(Slice(bw_block), kNoCompression, &bw_block_handle);
   }
 
   // Write metaindex block
   if (ok()) {
     BlockBuilder meta_index_block(&r->options);
     if (r->filter_block != nullptr) {
-      // Add mapping from "filter.Name" to location of filter data
       std::string key = "filter.";
       key.append(r->options.filter_policy->Name());
       std::string handle_encoding;
@@ -236,7 +240,12 @@ Status TableBuilder::Finish() {
       meta_index_block.Add(key, handle_encoding);
     }
 
-    // TODO(postrelease): Add stats and other meta blocks
+    if (r->bw_builder.NumValues() > 0) {
+      std::string handle_encoding;
+      bw_block_handle.EncodeTo(&handle_encoding);
+      meta_index_block.Add("bitweave.leveldb.BWH", handle_encoding);
+    }
+
     WriteBlock(&meta_index_block, &metaindex_block_handle);
   }
 

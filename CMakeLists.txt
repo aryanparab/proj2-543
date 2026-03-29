@@ -517,3 +517,7 @@ if(LEVELDB_INSTALL)
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
   )
 endif(LEVELDB_INSTALL)
+
+add_executable(bench_baseline benchmarks/bench_baseline.cc)
+target_link_libraries(bench_baseline leveldb)
+target_include_directories(bench_baseline PRIVATE include)
