@@ -47,6 +47,8 @@ struct TableBuilder::Rep {
   int64_t num_entries;
   bool closed;  // Either Finish() or Abandon() has been called.
   FilterBlockBuilder* filter_block;
+
+  // BitWeaving: one tag per physical data block.
   BitWeaveBuilder bw_builder;
 
   bool pending_index_entry;
@@ -100,28 +102,26 @@ void TableBuilder::Add(const Slice& key, const Slice& value) {
     r->filter_block->AddKey(key);
   }
 
-  // BitWeaving logic
-  uint32_t bw_val = 0;
-  Slice v = value;
-  if (!v.empty()) {
-    uint32_t parsed = 0;
-    bool parse_ok = true;
-    for (size_t i = 0; i < v.size(); i++) {
-      if (v[i] < '0' || v[i] > '9') {
+  // BitWeaving: parse value as uint32 and feed to the per-block accumulator.
+  // Non-numeric values contribute 0 (safe: they just add a band-0 bit to the
+  // mask, which may cause false positives but never false negatives).
+  {
+    uint32_t bw_val = 0;
+    bool parse_ok = !value.empty();
+    for (size_t i = 0; parse_ok && i < value.size(); i++) {
+      if (value[i] < '0' || value[i] > '9') {
         parse_ok = false;
-        break;
+      } else {
+        bw_val = bw_val * 10 + static_cast<uint32_t>(value[i] - '0');
       }
-      parsed = parsed * 10 + (v[i] - '0');
     }
-    if (parse_ok) bw_val = parsed;
+    r->bw_builder.AddValue(bw_val);
   }
-  r->bw_builder.AddValue(bw_val);
 
   r->last_key.assign(key.data(), key.size());
   r->num_entries++;
   r->data_block.Add(key, value);
 
-  // Check for block size limits
   const size_t estimated_block_size = r->data_block.CurrentSizeEstimate();
   if (estimated_block_size >= r->options.block_size) {
     Flush();
@@ -134,6 +134,13 @@ void TableBuilder::Flush() {
   if (!ok()) return;
   if (r->data_block.empty()) return;
   assert(!r->pending_index_entry);
+
+  // Commit the current block's accumulated BitWeaving values as one tag
+  // BEFORE WriteBlock() resets the BlockBuilder.  This must happen here,
+  // not inside WriteBlock(), so that only data blocks produce tags (not
+  // meta/index blocks, which are also written via WriteBlock()).
+  r->bw_builder.FlushBlock();
+
   WriteBlock(&r->data_block, &r->pending_handle);
   if (ok()) {
     r->pending_index_entry = true;
@@ -151,7 +158,7 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
 
   Slice block_contents;
   CompressionType type = r->options.compression;
-  
+
   switch (type) {
     case kNoCompression:
       block_contents = raw;
@@ -210,7 +217,7 @@ Status TableBuilder::status() const { return rep_->status; }
 
 Status TableBuilder::Finish() {
   Rep* r = rep_;
-  Flush();
+  Flush();  // flushes the last data block (also calls bw_builder.FlushBlock())
   assert(!r->closed);
   r->closed = true;
 
@@ -218,18 +225,23 @@ Status TableBuilder::Finish() {
 
   // Write filter block
   if (ok() && r->filter_block != nullptr) {
-    WriteRawBlock(r->filter_block->Finish(), kNoCompression, &filter_block_handle);
+    WriteRawBlock(r->filter_block->Finish(), kNoCompression,
+                  &filter_block_handle);
   }
 
-  // Write BitWeaving block
+  // Write BitWeaving meta-block
+  // Finish() handles any trailing values not yet flushed (shouldn't happen
+  // since Flush() above calls FlushBlock(), but it's a safe guard).
   BlockHandle bw_block_handle;
-  if (ok() && r->bw_builder.NumValues() > 0) {
+  bool wrote_bw_block = false;
+  if (ok() && r->bw_builder.NumBlocks() > 0) {
     std::string bw_block;
     r->bw_builder.Finish(&bw_block);
     WriteRawBlock(Slice(bw_block), kNoCompression, &bw_block_handle);
+    wrote_bw_block = true;
   }
 
-  // Write metaindex block
+  // Write meta-index block
   if (ok()) {
     BlockBuilder meta_index_block(&r->options);
     if (r->filter_block != nullptr) {
@@ -240,10 +252,10 @@ Status TableBuilder::Finish() {
       meta_index_block.Add(key, handle_encoding);
     }
 
-    if (r->bw_builder.NumValues() > 0) {
+    if (wrote_bw_block) {
       std::string handle_encoding;
       bw_block_handle.EncodeTo(&handle_encoding);
-      meta_index_block.Add("bitweave.leveldb.BWH", handle_encoding);
+      meta_index_block.Add(BW_BLOCK_NAME, handle_encoding);
     }
 
     WriteBlock(&meta_index_block, &metaindex_block_handle);

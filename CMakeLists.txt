@@ -6,6 +6,8 @@ cmake_minimum_required(VERSION 3.22)
 # Keep the version below in sync with the one in db.h
 project(leveldb VERSION 1.23.0 LANGUAGES C CXX)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+
 # C standard can be overridden when this is used as a sub-project.
 if(NOT CMAKE_C_STANDARD)
   # This project can use C11, but will gracefully decay down to C89.
@@ -392,6 +394,7 @@ if(LEVELDB_BUILD_TESTS)
   endfunction(leveldb_test)
 
   leveldb_test("db/c_test.c")
+ 
 
   if(NOT BUILD_SHARED_LIBS)
     # TODO(costan): This test also uses
@@ -521,3 +524,18 @@ endif(LEVELDB_INSTALL)
 add_executable(bench_baseline benchmarks/bench_baseline.cc)
 target_link_libraries(bench_baseline leveldb)
 target_include_directories(bench_baseline PRIVATE include)
+add_executable(bitweave_test 
+  util/testutil.cc
+  table/bitweave_test.cc
+)
+target_link_libraries(bitweave_test
+  leveldb
+  gtest
+  gtest_main
+  gmock  # <-- Add this
+)
+
+target_include_directories(bitweave_test PRIVATE
+  ${CMAKE_SOURCE_DIR}
+)
+

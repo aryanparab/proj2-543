@@ -4,6 +4,8 @@
 
 #include "leveldb/table.h"
 
+#include <unordered_map>
+
 #include "leveldb/cache.h"
 #include "leveldb/comparator.h"
 #include "leveldb/env.h"
@@ -13,10 +15,14 @@
 #include "table/filter_block.h"
 #include "table/format.h"
 #include "table/two_level_iterator.h"
+#include "util/bitweave.h"
 #include "util/coding.h"
 
 namespace leveldb {
 
+// ---------------------------------------------------------------
+// Table::Rep  — internal state for an open SST file
+// ---------------------------------------------------------------
 struct Table::Rep {
   ~Rep() {
     delete filter;
@@ -33,8 +39,24 @@ struct Table::Rep {
 
   BlockHandle metaindex_handle;  // Handle to metaindex_block: saved from footer
   Block* index_block;
+
+  // ---- BitWeaving read-path state --------------------------------
+  // bw_data owns the raw bytes of the BWH meta-block while this
+  // Table is open. bw_reader points into those bytes.
+  std::string   bw_data;    // empty → no BitWeaving index in this file
+  BitWeaveReader bw_reader;
+
+  // offset_to_block_index maps the byte offset of each data block
+  // (as stored in the index block) to its sequential 0-based index.
+  // Populated once in Table::Open by walking the index block.
+  // Used by BlockReader to convert a handle offset into a tag index.
+  std::unordered_map<uint64_t, uint32_t> offset_to_block_index;
+  // ----------------------------------------------------------------
 };
 
+// ---------------------------------------------------------------
+// Table::Open
+// ---------------------------------------------------------------
 Status Table::Open(const Options& options, RandomAccessFile* file,
                    uint64_t size, Table** table) {
   *table = nullptr;
@@ -52,7 +74,7 @@ Status Table::Open(const Options& options, RandomAccessFile* file,
   s = footer.DecodeFrom(&footer_input);
   if (!s.ok()) return s;
 
-  // Read the index block
+  // Read the index block.
   BlockContents index_block_contents;
   ReadOptions opt;
   if (options.paranoid_checks) {
@@ -61,8 +83,6 @@ Status Table::Open(const Options& options, RandomAccessFile* file,
   s = ReadBlock(file, opt, footer.index_handle(), &index_block_contents);
 
   if (s.ok()) {
-    // We've successfully read the footer and the index block: we're
-    // ready to serve requests.
     Block* index_block = new Block(index_block_contents);
     Rep* rep = new Table::Rep;
     rep->options = options;
@@ -72,38 +92,87 @@ Status Table::Open(const Options& options, RandomAccessFile* file,
     rep->cache_id = (options.block_cache ? options.block_cache->NewId() : 0);
     rep->filter_data = nullptr;
     rep->filter = nullptr;
+
     *table = new Table(rep);
     (*table)->ReadMeta(footer);
+
+    // ---- Build offset → block_index map from the index block --------
+    // Walk every entry in the index block.  Each entry's value is a
+    // varint-encoded BlockHandle; its offset field is the byte offset
+    // of the corresponding data block in the file.
+    {
+      Iterator* index_iter =
+          rep->index_block->NewIterator(options.comparator);
+      uint32_t idx = 0;
+      for (index_iter->SeekToFirst(); index_iter->Valid();
+           index_iter->Next(), ++idx) {
+        Slice handle_value = index_iter->value();
+        BlockHandle handle;
+        if (handle.DecodeFrom(&handle_value).ok()) {
+          rep->offset_to_block_index[handle.offset()] = idx;
+        }
+      }
+      delete index_iter;
+    }
   }
 
   return s;
 }
 
+// ---------------------------------------------------------------
+// ReadMeta  — load filter block and BitWeaving block from meta-index
+// ---------------------------------------------------------------
 void Table::ReadMeta(const Footer& footer) {
-  if (rep_->options.filter_policy == nullptr) {
-    return;  // Do not need any metadata
+  if (rep_->options.filter_policy == nullptr &&
+      rep_->bw_data.empty() /* not yet loaded */) {
+    // No filter policy and we haven't tried loading BW yet.
+    // Still fall through to load BitWeaving if present.
   }
 
-  // TODO(sanjay): Skip this if footer.metaindex_handle() size indicates
-  // it is an empty block.
   ReadOptions opt;
   if (rep_->options.paranoid_checks) {
     opt.verify_checksums = true;
   }
   BlockContents contents;
   if (!ReadBlock(rep_->file, opt, footer.metaindex_handle(), &contents).ok()) {
-    // Do not propagate errors since meta info is not needed for operation
+    // Do not propagate errors since meta info is not needed for operation.
     return;
   }
-  Block* meta = new Block(contents);
 
+  Block* meta = new Block(contents);
   Iterator* iter = meta->NewIterator(BytewiseComparator());
-  std::string key = "filter.";
-  key.append(rep_->options.filter_policy->Name());
-  iter->Seek(key);
-  if (iter->Valid() && iter->key() == Slice(key)) {
-    ReadFilter(iter->value());
+
+  // Load filter block (unchanged from stock LevelDB).
+  if (rep_->options.filter_policy != nullptr) {
+    std::string key = "filter.";
+    key += rep_->options.filter_policy->Name();
+    iter->Seek(key);
+    if (iter->Valid() && iter->key() == Slice(key)) {
+      ReadFilter(iter->value());
+    }
   }
+
+  // Load BitWeaving block.
+  {
+    iter->Seek(BW_BLOCK_NAME);
+    if (iter->Valid() && iter->key() == Slice(BW_BLOCK_NAME)) {
+      Slice handle_value = iter->value();
+      BlockHandle bw_handle;
+      if (bw_handle.DecodeFrom(&handle_value).ok()) {
+        BlockContents bw_contents;
+        if (ReadBlock(rep_->file, opt, bw_handle, &bw_contents).ok()) {
+          // Copy bytes into rep_->bw_data so the reader has a stable buffer.
+          rep_->bw_data.assign(bw_contents.data.data(),
+                               bw_contents.data.size());
+          if (bw_contents.heap_allocated) {
+            delete[] bw_contents.data.data();
+          }
+          rep_->bw_reader.Init(rep_->bw_data.data(), rep_->bw_data.size());
+        }
+      }
+    }
+  }
+
   delete iter;
   delete meta;
 }
@@ -115,8 +184,8 @@ void Table::ReadFilter(const Slice& filter_handle_value) {
     return;
   }
 
-  // We might want to unify with ReadBlock() if we start
-  // requiring checksum verification in Table::Open.
+  // We might want to unify with ReadBlock() but let's
+  // preserve the existing stock pattern exactly.
   ReadOptions opt;
   if (rep_->options.paranoid_checks) {
     opt.verify_checksums = true;
@@ -126,11 +195,14 @@ void Table::ReadFilter(const Slice& filter_handle_value) {
     return;
   }
   if (block.heap_allocated) {
-    rep_->filter_data = block.data.data();  // Will need to delete later
+    rep_->filter_data = block.data.data();  // Will need to delete later.
   }
   rep_->filter = new FilterBlockReader(rep_->options.filter_policy, block.data);
 }
 
+// ---------------------------------------------------------------
+// Table destructor / basic accessors
+// ---------------------------------------------------------------
 Table::~Table() { delete rep_; }
 
 static void DeleteBlock(void* arg, void* ignored) {
@@ -148,8 +220,13 @@ static void ReleaseBlock(void* arg, void* h) {
   cache->Release(handle);
 }
 
-// Convert an index iterator value (i.e., an encoded BlockHandle)
-// into an iterator over the contents of the corresponding block.
+// ---------------------------------------------------------------
+// BlockReader — the hot path; this is where we gate on MayMatch()
+// ---------------------------------------------------------------
+// Convert an index_value (encoded BlockHandle) into a Block iterator.
+// If BitWeaving says this block cannot satisfy the predicate in
+// options.bw_op / options.bw_predicate, return an empty iterator
+// immediately without touching the disk.
 Iterator* Table::BlockReader(void* arg, const ReadOptions& options,
                              const Slice& index_value) {
   Table* table = reinterpret_cast<Table*>(arg);
@@ -160,12 +237,31 @@ Iterator* Table::BlockReader(void* arg, const ReadOptions& options,
   BlockHandle handle;
   Slice input = index_value;
   Status s = handle.DecodeFrom(&input);
-  // We intentionally allow extra stuff in index_value so that we
-  // can add more features in the future.
+
+  // ---- BitWeaving filter check ------------------------------------
+  // Only evaluate if:
+  //   1. We have a valid reader (the BWH block was found and parsed).
+  //   2. The caller supplied a predicate (bw_op != 0).
+  if (s.ok() && table->rep_->bw_reader.valid() &&
+    options.bw_op != 0) {
+
+ 
+  
+  auto it = table->rep_->offset_to_block_index.find(handle.offset());
+  if (it != table->rep_->offset_to_block_index.end()) {
+    uint32_t block_index = it->second;
+    bool may_match = table->rep_->bw_reader.MayMatch(block_index, options.bw_predicate, options.bw_op);
+    if (!may_match) {
+      return NewEmptyIterator();
+    }
+  } 
+}
+  // -----------------------------------------------------------------
 
   if (s.ok()) {
     BlockContents contents;
     if (block_cache != nullptr) {
+      // Try the block cache first.
       char cache_key_buffer[16];
       EncodeFixed64(cache_key_buffer, table->rep_->cache_id);
       EncodeFixed64(cache_key_buffer + 8, handle.offset());
@@ -205,6 +301,9 @@ Iterator* Table::BlockReader(void* arg, const ReadOptions& options,
   return iter;
 }
 
+// ---------------------------------------------------------------
+// NewIterator / InternalGet / ApproximateOffsetOf (stock, unchanged)
+// ---------------------------------------------------------------
 Iterator* Table::NewIterator(const ReadOptions& options) const {
   return NewTwoLevelIterator(
       rep_->index_block->NewIterator(rep_->options.comparator),
@@ -223,7 +322,7 @@ Status Table::InternalGet(const ReadOptions& options, const Slice& k, void* arg,
     BlockHandle handle;
     if (filter != nullptr && handle.DecodeFrom(&handle_value).ok() &&
         !filter->KeyMayMatch(handle.offset(), k)) {
-      // Not found
+      // Not found via bloom filter
     } else {
       Iterator* block_iter = BlockReader(this, options, iiter->value());
       block_iter->Seek(k);
@@ -261,7 +360,7 @@ uint64_t Table::ApproximateOffsetOf(const Slice& key) const {
   } else {
     // key is past the last key in the file.  Approximate the offset
     // by returning the offset of the metaindex block (which is
-    // right near the end of the file).
+    // temporary; this is good enough).
     result = rep_->metaindex_handle.offset();
   }
   delete index_iter;
