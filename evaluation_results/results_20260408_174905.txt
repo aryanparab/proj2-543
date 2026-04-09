@@ -1,0 +1,4 @@
+BitWeaving Evaluation Results - 20260408_174905
+==========================================
+
+./run_evaluation.sh: line 47: ./bitweave_benchmark: No such file or directory

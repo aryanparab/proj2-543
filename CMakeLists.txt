@@ -539,3 +539,61 @@ target_include_directories(bitweave_test PRIVATE
   ${CMAKE_SOURCE_DIR}
 )
 
+# BitWeaving Benchmark Target
+add_executable(bitweave_benchmark 
+  ../bitweave_benchmark.cc
+)
+
+target_link_libraries(bitweave_benchmark
+  leveldb
+)
+
+target_include_directories(bitweave_benchmark PRIVATE
+  ${CMAKE_SOURCE_DIR}
+)
+ 
+
+# ============================================================================
+# BitWeaving Real-World Benchmark
+# ============================================================================
+add_executable(bitweave_realworld 
+  ../bitweave_realworld.cc
+)
+
+target_link_libraries(bitweave_realworld
+  leveldb
+)
+
+target_include_directories(bitweave_realworld PRIVATE
+  ${CMAKE_SOURCE_DIR}
+)
+
+# ============================================================================
+# BitWeaving Large-Scale Benchmark
+# ============================================================================
+add_executable(bitweave_largescale 
+  ../bitweave_largescale.cc
+)
+
+target_link_libraries(bitweave_largescale
+  leveldb
+)
+
+target_include_directories(bitweave_largescale PRIVATE
+  ${CMAKE_SOURCE_DIR}
+)
+ 
+
+# BitWeaving Real-Time Producer
+add_executable(bitweave_producer ../bitweave_producer.cc)
+target_link_libraries(bitweave_producer leveldb)
+target_include_directories(bitweave_producer PRIVATE ${CMAKE_SOURCE_DIR})
+
+# BitWeaving Real-Time Consumer
+add_executable(bitweave_consumer ../bitweave_consumer.cc)
+target_link_libraries(bitweave_consumer leveldb)
+target_include_directories(bitweave_consumer PRIVATE ${CMAKE_SOURCE_DIR})
+
+add_executable(bitweave_datagen ../bitweave_datagen_10M.cc)
+target_link_libraries(bitweave_datagen leveldb)
+target_include_directories(bitweave_datagen PRIVATE ${CMAKE_SOURCE_DIR})
