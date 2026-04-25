@@ -45,6 +45,22 @@ check_library_exists(snappy snappy_compress "" HAVE_SNAPPY)
 check_library_exists(zstd zstd_compress "" HAVE_ZSTD)
 check_library_exists(tcmalloc malloc "" HAVE_TCMALLOC)
 
+include(CheckCXXCompilerFlag)
+check_cxx_compiler_flag("-mavx2" HAVE_AVX2_FLAG)
+if(HAVE_AVX2_FLAG)
+  include(CheckCXXSourceCompiles)
+  set(CMAKE_REQUIRED_FLAGS "-mavx2")
+  check_cxx_source_compiles("
+#include <immintrin.h>
+int main() {
+  __m256i a = _mm256_setzero_si256();
+  (void)a;
+  return 0;
+}
+" HAVE_AVX2)
+  unset(CMAKE_REQUIRED_FLAGS)
+endif()
+
 include(CheckCXXSymbolExists)
 # Using check_cxx_symbol_exists() instead of check_c_symbol_exists() because
 # we're including the header from C++, and feature detection should use the same
@@ -597,3 +613,13 @@ target_include_directories(bitweave_consumer PRIVATE ${CMAKE_SOURCE_DIR})
 add_executable(bitweave_datagen ../bitweave_datagen_10M.cc)
 target_link_libraries(bitweave_datagen leveldb)
 target_include_directories(bitweave_datagen PRIVATE ${CMAKE_SOURCE_DIR})
+
+# ============================================================================
+# BitWeaving SIMD Benchmark (AVX2)
+# ============================================================================
+if(HAVE_AVX2)
+  add_executable(bitweave_simd_bench ../bitweave_simd_bench.cc)
+  target_link_libraries(bitweave_simd_bench leveldb)
+  target_include_directories(bitweave_simd_bench PRIVATE ${CMAKE_SOURCE_DIR})
+  target_compile_options(bitweave_simd_bench PRIVATE -mavx2)
+endif()

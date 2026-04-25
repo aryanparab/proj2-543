@@ -7,6 +7,10 @@
 #include <algorithm>
 #include <limits>
 
+#ifdef __AVX2__
+#include <immintrin.h>
+#endif
+
 // =============================================================
 // BitWeaving/H for LevelDB  —  Phase 2 (Option A: per-block tags)
 // =============================================================
@@ -15,10 +19,12 @@
 // At query time, BlockReader looks up tag[block_index] before doing
 // any I/O.  If MayMatch() returns false the read is skipped entirely.
 //
-// Three things in this file:
-//   1. Constants
-//   2. BitWeaveBuilder  — used when WRITING an SST
-//   3. BitWeaveReader   — used when READING an SST
+// Serialized layout (columnar, SIMD-friendly):
+//   [ 4 bytes: num_blocks (uint32_t) ]
+//   [ num_blocks_padded × 4 bytes: all block_min values ]
+//   [ num_blocks_padded × 4 bytes: all block_max values ]
+//   [ num_blocks_padded × 4 bytes: all bitmasks ]
+// num_blocks_padded = ((num_blocks + 7) / 8) * 8  (padding for AVX2 loads)
 // =============================================================
 
 namespace leveldb {
@@ -60,13 +66,12 @@ inline int bw_value_to_band(uint32_t value, uint32_t min_val, uint32_t max_val) 
 //   3. Call Finish(dst) once, at SST finalisation, to serialise all
 //      committed tags into the BWH meta-block.
 //
-// Block format written:
-//   [ 4 bytes: num_blocks (uint32_t) ]
-//   Per block:
-//     [ 4 bytes: block_min  (uint32_t) ]
-//     [ 4 bytes: block_max  (uint32_t) ]
-//     [ 4 bytes: bitmask    (uint32_t) ]
-//   Total per block: 12 bytes
+// Serialized format (columnar):
+//   [ 4 bytes: num_blocks ]
+//   [ num_blocks_padded × 4 bytes: all mins ]
+//   [ num_blocks_padded × 4 bytes: all maxes ]
+//   [ num_blocks_padded × 4 bytes: all masks ]
+// Padding sentinel: min=UINT32_MAX, max=0, mask=0 (never matches)
 // ---------------------------------------------------------------
 class BitWeaveBuilder {
  public:
@@ -83,13 +88,9 @@ class BitWeaveBuilder {
   // Commits the current accumulator as one tag and resets it.
   void FlushBlock() {
     if (cur_values_.empty()) {
-      // Empty block: emit a tag that never matches anything.
-      uint32_t entry[3] = {
-          std::numeric_limits<uint32_t>::max(),  // min
-          0,                                      // max  (max < min → impossible range)
-          0                                       // mask (all bands empty)
-      };
-      tags_.append(reinterpret_cast<char*>(entry), 12);
+      block_mins_.push_back(std::numeric_limits<uint32_t>::max());
+      block_maxs_.push_back(0);
+      block_masks_.push_back(0);
       num_blocks_++;
       ResetAccumulator();
       return;
@@ -103,8 +104,9 @@ class BitWeaveBuilder {
       mask |= (1u << band);
     }
 
-    uint32_t entry[3] = { cur_min_, cur_max_, mask };
-    tags_.append(reinterpret_cast<char*>(entry), 12);
+    block_mins_.push_back(cur_min_);
+    block_maxs_.push_back(cur_max_);
+    block_masks_.push_back(mask);
     num_blocks_++;
     ResetAccumulator();
   }
@@ -113,23 +115,33 @@ class BitWeaveBuilder {
   // Any values accumulated since the last FlushBlock() are flushed
   // automatically (handles the last partial block).
   void Finish(std::string* dst) {
-    // Flush any trailing values that didn't get a FlushBlock() call
-    // (this happens for the very last data block if Finish() is called
-    //  before the caller has a chance to call FlushBlock()).
     if (!cur_values_.empty()) {
       FlushBlock();
     }
 
     if (num_blocks_ == 0) return;
 
-    // Write: [num_blocks][tag0][tag1]...[tagN-1]
+    // Pad arrays to a multiple of 8 so AVX2 loads never read past the end.
+    // Sentinel values: min=UINT32_MAX, max=0, mask=0 → never matches any predicate.
+    size_t padded = ((num_blocks_ + 7) / 8) * 8;
+    while (block_mins_.size() < padded) {
+      block_mins_.push_back(std::numeric_limits<uint32_t>::max());
+      block_maxs_.push_back(0);
+      block_masks_.push_back(0);
+    }
+
+    // Columnar layout: [num_blocks][all mins][all maxes][all masks]
     uint32_t nb = static_cast<uint32_t>(num_blocks_);
-    dst->append(reinterpret_cast<char*>(&nb), 4);
-    dst->append(tags_);
+    dst->append(reinterpret_cast<const char*>(&nb), 4);
+    dst->append(reinterpret_cast<const char*>(block_mins_.data()),  padded * 4);
+    dst->append(reinterpret_cast<const char*>(block_maxs_.data()),  padded * 4);
+    dst->append(reinterpret_cast<const char*>(block_masks_.data()), padded * 4);
   }
 
   void Reset() {
-    tags_.clear();
+    block_mins_.clear();
+    block_maxs_.clear();
+    block_masks_.clear();
     num_blocks_ = 0;
     ResetAccumulator();
   }
@@ -146,9 +158,11 @@ class BitWeaveBuilder {
     cur_values_.clear();
   }
 
-  // Committed tag bytes (each group is 12 bytes: min, max, mask).
-  std::string tags_;
-  size_t      num_blocks_ = 0;
+  // Per-block columnar arrays (one entry per committed block).
+  std::vector<uint32_t> block_mins_;
+  std::vector<uint32_t> block_maxs_;
+  std::vector<uint32_t> block_masks_;
+  size_t                num_blocks_ = 0;
 
   // Accumulator for the block currently being built.
   uint32_t              cur_min_;
@@ -170,10 +184,15 @@ class BitWeaveBuilder {
 //
 // false negatives are impossible (we never wrongly skip).
 // false positives are ok  (we sometimes read when not needed).
+//
+// MayMatchSIMD() evaluates 8 blocks per AVX2 instruction.
+// MayMatchBatch() scans all blocks and returns surviving block indices.
 // ---------------------------------------------------------------
 class BitWeaveReader {
  public:
-  BitWeaveReader() : data_(nullptr), num_blocks_(0) {}
+  BitWeaveReader()
+      : data_(nullptr), num_blocks_(0), num_blocks_padded_(0),
+        min_data_(nullptr), max_data_(nullptr), mask_data_(nullptr) {}
 
   // Call once after loading the BWH block from the SST.
   // Returns false if the block is malformed.
@@ -181,12 +200,17 @@ class BitWeaveReader {
     if (size < 4) return false;
 
     memcpy(&num_blocks_, data, 4);
+    num_blocks_padded_ = (num_blocks_ == 0)
+                             ? 0
+                             : ((num_blocks_ + 7) / 8) * 8;
 
-    size_t expected = 4 + (size_t)num_blocks_ * 12;
+    size_t expected = 4 + (size_t)num_blocks_padded_ * 12;
     if (size < expected) return false;
 
-    // Point past the 4-byte header to the first tag entry.
-    data_ = data + 4;
+    data_      = data;
+    min_data_  = reinterpret_cast<const uint32_t*>(data + 4);
+    max_data_  = min_data_  + num_blocks_padded_;
+    mask_data_ = max_data_  + num_blocks_padded_;
     return true;
   }
 
@@ -196,33 +220,130 @@ class BitWeaveReader {
   //
   // threshold: the literal value in the WHERE clause  (e.g. 800)
   // op:        '>' or '<'
- bool MayMatch(uint32_t block_index, uint32_t threshold, char op) const {
-if (data_ == nullptr || block_index >= num_blocks_) return true;
+  bool MayMatch(uint32_t block_index, uint32_t threshold, char op) const {
+    if (data_ == nullptr || block_index >= num_blocks_) return true;
 
-    const uint32_t* entry =
-        reinterpret_cast<const uint32_t*>(data_ + block_index * 12);
-    uint32_t bmin = entry[0];
-    uint32_t bmax = entry[1];
-    uint32_t mask = entry[2];
+    uint32_t bmin = min_data_[block_index];
+    uint32_t bmax = max_data_[block_index];
 
-   
-
-    // Simple min/max range check
-    if (op == '>') {
-      return bmax > threshold;
-    } else if (op == '<') {
-      return bmin < threshold;
-    }
-    
+    if (op == '>') return bmax > threshold;
+    if (op == '<') return bmin < threshold;
     return true;
-}
+  }
 
-  bool     valid()       const { return data_ != nullptr; }
-  uint32_t num_blocks()  const { return num_blocks_; }
+  // Returns a bitmask of which blocks in [start_block, start_block+8)
+  // MAY contain values matching the predicate.
+  // Bit i set → block (start_block+i) must be read.
+  // Bit i clear → block can be skipped.
+  // Requires AVX2; falls back to scalar when __AVX2__ is not defined.
+  // Caller must ensure start_block <= num_blocks_padded_ - 8.
+  uint8_t MayMatchSIMD(uint32_t start_block, uint32_t threshold,
+                        char op) const {
+#ifdef __AVX2__
+    // XOR flip converts unsigned → offset-binary so signed _cmpgt works
+    // correctly for unsigned values (standard "flip MSB" trick).
+    const __m256i flip = _mm256_set1_epi32((int)0x80000000u);
+    __m256i thresh_flip =
+        _mm256_xor_si256(_mm256_set1_epi32((int)threshold), flip);
+
+    if (op == '>') {
+      // Stage 1: ZoneMap — skip blocks where bmax <= threshold.
+      __m256i bmax_vec = _mm256_xor_si256(
+          _mm256_loadu_si256(
+              reinterpret_cast<const __m256i*>(max_data_ + start_block)),
+          flip);
+      __m256i cmp = _mm256_cmpgt_epi32(bmax_vec, thresh_flip);
+      uint8_t zonemap_result =
+          (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+
+      if (zonemap_result == 0) return 0;  // all 8 blocks safely skipped
+
+      // Stage 2: Bitmask refinement — scalar per survivor (band math needs
+      // per-lane division which has no AVX2 equivalent).
+      uint8_t final_result = 0;
+      for (int i = 0; i < 8; i++) {
+        if (!((zonemap_result >> i) & 1)) continue;
+        uint32_t bmin  = min_data_ [start_block + i];
+        uint32_t bmax  = max_data_ [start_block + i];
+        uint32_t bmask = mask_data_[start_block + i];
+
+        if (bmax <= bmin) {
+          // Degenerate block: all values equal bmin; ZoneMap says bmin > threshold.
+          final_result |= (1 << i);
+          continue;
+        }
+        if (threshold < bmin) {
+          // All values in block are > threshold.
+          final_result |= (1 << i);
+          continue;
+        }
+        // threshold >= bmin: find which band threshold falls in.
+        int lo_band = (int)(((uint64_t)(threshold - bmin) * 32)
+                            / ((uint64_t)(bmax - bmin + 1)));
+        lo_band = std::max(0, std::min(31, lo_band));
+        // query_mask selects all bands >= lo_band (values that may exceed threshold).
+        uint32_t query_mask = (lo_band == 0) ? 0xFFFFFFFFu
+                                             : (0xFFFFFFFFu << lo_band);
+        if (bmask & query_mask) final_result |= (1 << i);
+      }
+      return final_result;
+    }
+
+    // op == '<': skip blocks where bmin >= threshold (i.e. threshold <= bmin).
+    __m256i bmin_vec = _mm256_xor_si256(
+        _mm256_loadu_si256(
+            reinterpret_cast<const __m256i*>(min_data_ + start_block)),
+        flip);
+    __m256i cmp = _mm256_cmpgt_epi32(thresh_flip, bmin_vec);
+    return (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+
+#else  // !__AVX2__ — scalar fallback, one block at a time
+    uint8_t result = 0;
+    for (int i = 0; i < 8; i++) {
+      if (MayMatch(start_block + (uint32_t)i, threshold, op))
+        result |= (uint8_t)(1 << i);
+    }
+    return result;
+#endif
+  }
+
+  // Scans all blocks and returns the indices of blocks that MAY match.
+  // Uses MayMatchSIMD() in steps of 8 (AVX2), falls back to scalar otherwise.
+  std::vector<uint32_t> MayMatchBatch(uint32_t threshold, char op) const {
+    std::vector<uint32_t> result;
+    if (!valid()) return result;
+
+#ifdef __AVX2__
+    for (uint32_t start = 0; start < num_blocks_padded_; start += 8) {
+      uint8_t bits = MayMatchSIMD(start, threshold, op);
+      if (bits == 0) continue;
+      for (int i = 0; i < 8; i++) {
+        uint32_t idx = start + (uint32_t)i;
+        if (idx >= num_blocks_) break;          // tail padding
+        if ((bits >> i) & 1) result.push_back(idx);
+      }
+    }
+#else
+    for (uint32_t b = 0; b < num_blocks_; b++) {
+      if (MayMatch(b, threshold, op)) result.push_back(b);
+    }
+#endif
+    return result;
+  }
+
+  bool     valid()              const { return data_ != nullptr; }
+  uint32_t num_blocks()         const { return num_blocks_; }
+  uint32_t num_blocks_padded()  const { return num_blocks_padded_; }
 
  private:
-  const char* data_;        // points into the loaded BWH block
-  uint32_t    num_blocks_;
+  const char*     data_;              // base pointer into loaded BWH block
+  uint32_t        num_blocks_;        // actual number of blocks
+  uint32_t        num_blocks_padded_; // padded to multiple of 8
+
+  // Three columnar pointers into the BWH block (set by Init()).
+  const uint32_t* min_data_;
+  const uint32_t* max_data_;
+  const uint32_t* mask_data_;
 };
 
 } // namespace leveldb
