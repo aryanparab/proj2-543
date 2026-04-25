@@ -237,9 +237,9 @@ int main(int argc, char** argv) {
       
       // 95% normal, 5% slow responses >500ms
       if (gen() % 100 < 5) {
-        return 500 + (gen() % 2000);  // 500-2500ms slow
+        return (uint32_t)(500 + (gen() % 2000));  // 500-2500ms slow
       }
-      return (uint32_t)std::min(500.0, gamma_dist(gen));
+      return (uint32_t)(int)std::min(500.0, gamma_dist(gen));
     });
     bm.Compact();
     
@@ -264,9 +264,9 @@ int main(int argc, char** argv) {
       
       // 95% normal operation, 5% high load >80%
       if (gen() % 100 < 5) {
-        return 80 + (gen() % 20);  // 80-100% high load
+        return (uint32_t)(80 + (gen() % 20));  // 80-100% high load
       }
-      return (uint32_t)std::max(0.0, std::min(100.0, normal_dist(gen)));
+      return (uint32_t)(int)std::max(0.0, std::min(100.0, normal_dist(gen)));
     });
     bm.Compact();
     

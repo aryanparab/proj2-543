@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti -O3 -DNDEBUG CMakeFiles/bitweave_datagen.dir/bitweave_datagen_10M.cc.o -o bitweave_datagen  libleveldb.a 

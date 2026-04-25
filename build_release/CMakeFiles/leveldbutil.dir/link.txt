@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti -O3 -DNDEBUG CMakeFiles/leveldbutil.dir/db/leveldbutil.cc.o -o leveldbutil  libleveldb.a 

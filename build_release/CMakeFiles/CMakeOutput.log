@@ -1,0 +1,874 @@
+The system is: Linux - 6.1.166-197.305.amzn2023.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/cloudshell-user/proj2-543/build_release/CMakeFiles/3.22.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: -O3;-mavx2
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/cloudshell-user/proj2-543/build_release/CMakeFiles/3.22.2/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1acbc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1acbc.dir/build.make CMakeFiles/cmTC_1acbc.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -v -o CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-amazon-linux
+Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c,c++,fortran,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/'
+ /usr/libexec/gcc/x86_64-amazon-linux/11/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_1acbc.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64-v2 -version -o /tmp/ccreqKCJ.s
+GNU C17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)
+	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/include-fixed"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/../../../../x86_64-amazon-linux/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-amazon-linux/11/include
+ /usr/local/include
+ /usr/include
+End of search list.
+GNU C17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)
+	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 3afa1bded716167b972370e411fc5914
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/'
+ as -v --64 -o CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o /tmp/ccreqKCJ.s
+GNU assembler version 2.41 (x86_64-amazon-linux) using BFD version version 2.41-50.amzn2023.0.5
+COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_1acbc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1acbc.dir/link.txt --verbose=1
+/usr/bin/cc  -v CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -o cmTC_1acbc 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-amazon-linux
+Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c,c++,fortran,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1acbc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_1acbc.'
+ /usr/libexec/gcc/x86_64-amazon-linux/11/collect2 -plugin /usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBQmMYj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_1acbc /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o /usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o -L/usr/lib/gcc/x86_64-amazon-linux/11 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../.. CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-amazon-linux/11/crtend.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1acbc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_1acbc.'
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-amazon-linux/11/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-amazon-linux/11/include] ==> [/usr/lib/gcc/x86_64-amazon-linux/11/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/gcc/x86_64-amazon-linux/11/include;/usr/local/include;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1acbc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1acbc.dir/build.make CMakeFiles/cmTC_1acbc.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-amazon-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c c++ fortran lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/']
+  ignore line: [ /usr/libexec/gcc/x86_64-amazon-linux/11/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_1acbc.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64-v2 -version -o /tmp/ccreqKCJ.s]
+  ignore line: [GNU C17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)]
+  ignore line: [	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/../../../../x86_64-amazon-linux/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-amazon-linux/11/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)]
+  ignore line: [	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 3afa1bded716167b972370e411fc5914]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o /tmp/ccreqKCJ.s]
+  ignore line: [GNU assembler version 2.41 (x86_64-amazon-linux) using BFD version version 2.41-50.amzn2023.0.5]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_1acbc]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1acbc.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -o cmTC_1acbc ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-amazon-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c c++ fortran lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1acbc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_1acbc.']
+  link line: [ /usr/libexec/gcc/x86_64-amazon-linux/11/collect2 -plugin /usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBQmMYj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_1acbc /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o /usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o -L/usr/lib/gcc/x86_64-amazon-linux/11 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../.. CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-amazon-linux/11/crtend.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-amazon-linux/11/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccBQmMYj.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_1acbc] ==> ignore
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11/../../..] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../..]
+    arg [CMakeFiles/cmTC_1acbc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11] ==> [/usr/lib/gcc/x86_64-amazon-linux/11]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o;/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o;/usr/lib64/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-amazon-linux/11;/usr/lib64;/lib64;/usr/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d1d8e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d1d8e.dir/build.make CMakeFiles/cmTC_d1d8e.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++   -O3 -mavx2    -v -o CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-amazon-linux
+Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c,c++,fortran,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) 
+COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/'
+ /usr/libexec/gcc/x86_64-amazon-linux/11/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_d1d8e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mavx2 -mtune=generic -march=x86-64-v2 -O3 -version -o /tmp/ccE4e0T0.s
+GNU C++17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)
+	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/include-fixed"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/../../../../x86_64-amazon-linux/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11
+ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/x86_64-amazon-linux
+ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/backward
+ /usr/lib/gcc/x86_64-amazon-linux/11/include
+ /usr/local/include
+ /usr/include
+End of search list.
+GNU C++17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)
+	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: a079f9f2d8eeb805f2d08cb0a1f4bc6b
+COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/'
+ as -v --64 -o CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccE4e0T0.s
+GNU assembler version 2.41 (x86_64-amazon-linux) using BFD version version 2.41-50.amzn2023.0.5
+COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_d1d8e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1d8e.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2   -v CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_d1d8e 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-amazon-linux
+Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c,c++,fortran,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'cmTC_d1d8e' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_d1d8e.'
+ /usr/libexec/gcc/x86_64-amazon-linux/11/collect2 -plugin /usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSCHrCX.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d1d8e /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o /usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o -L/usr/lib/gcc/x86_64-amazon-linux/11 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../.. CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-amazon-linux/11/crtend.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'cmTC_d1d8e' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_d1d8e.'
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11]
+    add: [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/x86_64-amazon-linux]
+    add: [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/backward]
+    add: [/usr/lib/gcc/x86_64-amazon-linux/11/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11] ==> [/usr/include/c++/11]
+  collapse include dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/x86_64-amazon-linux] ==> [/usr/include/c++/11/x86_64-amazon-linux]
+  collapse include dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/backward] ==> [/usr/include/c++/11/backward]
+  collapse include dir [/usr/lib/gcc/x86_64-amazon-linux/11/include] ==> [/usr/lib/gcc/x86_64-amazon-linux/11/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/11;/usr/include/c++/11/x86_64-amazon-linux;/usr/include/c++/11/backward;/usr/lib/gcc/x86_64-amazon-linux/11/include;/usr/local/include;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d1d8e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d1d8e.dir/build.make CMakeFiles/cmTC_d1d8e.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++   -O3 -mavx2    -v -o CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-amazon-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c c++ fortran lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/']
+  ignore line: [ /usr/libexec/gcc/x86_64-amazon-linux/11/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_d1d8e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mavx2 -mtune=generic -march=x86-64-v2 -O3 -version -o /tmp/ccE4e0T0.s]
+  ignore line: [GNU C++17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)]
+  ignore line: [	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-amazon-linux/11/../../../../x86_64-amazon-linux/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11]
+  ignore line: [ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/x86_64-amazon-linux]
+  ignore line: [ /usr/lib/gcc/x86_64-amazon-linux/11/../../../../include/c++/11/backward]
+  ignore line: [ /usr/lib/gcc/x86_64-amazon-linux/11/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (GCC) version 11.5.0 20240719 (Red Hat 11.5.0-5) (x86_64-amazon-linux)]
+  ignore line: [	compiled by GNU C version 11.5.0 20240719 (Red Hat 11.5.0-5)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: a079f9f2d8eeb805f2d08cb0a1f4bc6b]
+  ignore line: [COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccE4e0T0.s]
+  ignore line: [GNU assembler version 2.41 (x86_64-amazon-linux) using BFD version version 2.41-50.amzn2023.0.5]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_d1d8e]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1d8e.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++ -O3 -mavx2   -v CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_d1d8e ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-amazon-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-host-pie --enable-host-bind-now --enable-languages=c c++ fortran lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/amazonlinux/amazon-linux-2022 --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-11.5.0-20240719/obj-x86_64-amazon-linux/isl-install --enable-multilib --with-linker-hash-style=gnu --enable-offload-targets=nvptx-none --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-arch_64=x86-64-v2 --with-arch_32=x86-64 --build=x86_64-amazon-linux --with-build-config=bootstrap-lto --enable-link-serialization=1]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/11/:/usr/libexec/gcc/x86_64-amazon-linux/:/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-amazon-linux/11/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-amazon-linux/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-O3' '-mavx2' '-v' '-o' 'cmTC_d1d8e' '-shared-libgcc' '-mtune=generic' '-march=x86-64-v2' '-dumpdir' 'cmTC_d1d8e.']
+  link line: [ /usr/libexec/gcc/x86_64-amazon-linux/11/collect2 -plugin /usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSCHrCX.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d1d8e /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o /usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o -L/usr/lib/gcc/x86_64-amazon-linux/11 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-amazon-linux/11/../../.. CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-amazon-linux/11/crtend.o /usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-amazon-linux/11/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/libexec/gcc/x86_64-amazon-linux/11/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/libexec/gcc/x86_64-amazon-linux/11/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccSCHrCX.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_d1d8e] ==> ignore
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-amazon-linux/11/../../..] ==> dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../..]
+    arg [CMakeFiles/cmTC_d1d8e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o]
+    arg [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o] ==> obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+  collapse obj [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11] ==> [/usr/lib/gcc/x86_64-amazon-linux/11]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/gcc/x86_64-amazon-linux/11/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib/gcc/x86_64-amazon-linux/11/crtbegin.o;/usr/lib/gcc/x86_64-amazon-linux/11/crtend.o;/usr/lib64/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-amazon-linux/11;/usr/lib64;/lib64;/usr/lib]
+  implicit fwks: []
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_663aa/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_663aa.dir/build.make CMakeFiles/cmTC_663aa.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_663aa.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_663aa.dir/CheckIncludeFile.c.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_663aa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_663aa.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_663aa.dir/CheckIncludeFile.c.o -o cmTC_663aa 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test HAVE_AVX2_FLAG succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_11005/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_11005.dir/build.make CMakeFiles/cmTC_11005.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_11005.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_AVX2_FLAG  -O3 -mavx2 -g -O0    -mavx2 -std=c++17 -o CMakeFiles/cmTC_11005.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_11005
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_11005.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0  CMakeFiles/cmTC_11005.dir/src.cxx.o -o cmTC_11005 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_AVX2 succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7e917/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7e917.dir/build.make CMakeFiles/cmTC_7e917.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7e917.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_AVX2  -O3 -mavx2 -g -O0 -mavx2 -std=c++17 -o CMakeFiles/cmTC_7e917.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_7e917
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7e917.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -mavx2 CMakeFiles/cmTC_7e917.dir/src.cxx.o -o cmTC_7e917 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <immintrin.h>
+int main() {
+  __m256i a = _mm256_setzero_si256();
+  (void)a;
+  return 0;
+}
+
+Determining if the fdatasync exist passed with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cd6a9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cd6a9.dir/build.make CMakeFiles/cmTC_cd6a9.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cd6a9.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -O3 -mavx2 -g -O0  -std=c++17 -o CMakeFiles/cmTC_cd6a9.dir/CheckSymbolExists.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_cd6a9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd6a9.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0  CMakeFiles/cmTC_cd6a9.dir/CheckSymbolExists.cxx.o -o cmTC_cd6a9 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+File /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef fdatasync
+  return ((int*)(&fdatasync))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the O_CLOEXEC exist passed with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b614d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b614d.dir/build.make CMakeFiles/cmTC_b614d.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b614d.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -O3 -mavx2 -g -O0  -std=c++17 -o CMakeFiles/cmTC_b614d.dir/CheckSymbolExists.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_b614d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b614d.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0  CMakeFiles/cmTC_b614d.dir/CheckSymbolExists.cxx.o -o cmTC_b614d 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+File /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <fcntl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef O_CLOEXEC
+  return ((int*)(&O_CLOEXEC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C++ SOURCE FILE Test LEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c0707/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c0707.dir/build.make CMakeFiles/cmTC_c0707.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c0707.dir/src.cxx.o
+/usr/bin/c++ -DLEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti    -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/cmTC_c0707.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_c0707
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0707.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  CMakeFiles/cmTC_c0707.dir/src.cxx.o -o cmTC_c0707 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX17_HAS_INCLUDE succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3f07a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3f07a.dir/build.make CMakeFiles/cmTC_3f07a.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3f07a.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX17_HAS_INCLUDE  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -std=c++17 -o CMakeFiles/cmTC_3f07a.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3f07a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f07a.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  CMakeFiles/cmTC_3f07a.dir/src.cxx.o -o cmTC_3f07a 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#if defined(__has_include) &&  __has_include(<string>)
+#include <string>
+#endif
+int main() { std::string str; return 0; }
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2e4f1/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_2e4f1.dir/build.make CMakeFiles/cmTC_2e4f1.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2e4f1.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -Wstrict-prototypes  -std=c11 -o CMakeFiles/cmTC_2e4f1.dir/CheckIncludeFile.c.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2e4f1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e4f1.dir/link.txt --verbose=1
+/usr/bin/cc  -Wstrict-prototypes  CMakeFiles/cmTC_2e4f1.dir/CheckIncludeFile.c.o -o cmTC_2e4f1 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7dc62/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7dc62.dir/build.make CMakeFiles/cmTC_7dc62.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7dc62.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -Wstrict-prototypes  -std=c11 -o CMakeFiles/cmTC_7dc62.dir/src.c.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7dc62
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7dc62.dir/link.txt --verbose=1
+/usr/bin/cc  -Wstrict-prototypes  CMakeFiles/cmTC_7dc62.dir/src.c.o -o cmTC_7dc62 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function shm_open exists in the rt passed with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5d1e6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5d1e6.dir/build.make CMakeFiles/cmTC_5d1e6.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5d1e6.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wstrict-prototypes -DCHECK_FUNCTION_EXISTS=shm_open -std=c11 -o CMakeFiles/cmTC_5d1e6.dir/CheckFunctionExists.c.o -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5d1e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5d1e6.dir/link.txt --verbose=1
+/usr/bin/cc  -Wstrict-prototypes -DCHECK_FUNCTION_EXISTS=shm_open CMakeFiles/cmTC_5d1e6.dir/CheckFunctionExists.c.o -o cmTC_5d1e6  -lrt 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WALL succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4b8ef/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4b8ef.dir/build.make CMakeFiles/cmTC_4b8ef.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4b8ef.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WALL  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall   -Wall -std=c++17 -o CMakeFiles/cmTC_4b8ef.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4b8ef
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b8ef.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall CMakeFiles/cmTC_4b8ef.dir/src.cxx.o -o cmTC_4b8ef 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WEXTRA succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_55d85/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_55d85.dir/build.make CMakeFiles/cmTC_55d85.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_55d85.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WEXTRA  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra   -Wextra -std=c++17 -o CMakeFiles/cmTC_55d85.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_55d85
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55d85.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra CMakeFiles/cmTC_55d85.dir/src.cxx.o -o cmTC_55d85 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHADOW succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_052cc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_052cc.dir/build.make CMakeFiles/cmTC_052cc.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_052cc.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WSHADOW  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow   -Wshadow -std=c++17 -o CMakeFiles/cmTC_052cc.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_052cc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_052cc.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow CMakeFiles/cmTC_052cc.dir/src.cxx.o -o cmTC_052cc 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WFLOAT_EQUAL succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bb172/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bb172.dir/build.make CMakeFiles/cmTC_bb172.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bb172.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WFLOAT_EQUAL  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal   -Wfloat-equal -std=c++17 -o CMakeFiles/cmTC_bb172.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_bb172
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb172.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal CMakeFiles/cmTC_bb172.dir/src.cxx.o -o cmTC_bb172 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WOLD_STYLE_CAST succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f3cae/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f3cae.dir/build.make CMakeFiles/cmTC_f3cae.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f3cae.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WOLD_STYLE_CAST  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast   -Wold-style-cast -std=c++17 -o CMakeFiles/cmTC_f3cae.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f3cae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3cae.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast CMakeFiles/cmTC_f3cae.dir/src.cxx.o -o cmTC_f3cae 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WCONVERSION succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a8bf7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a8bf7.dir/build.make CMakeFiles/cmTC_a8bf7.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a8bf7.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WCONVERSION  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion   -Wconversion -std=c++17 -o CMakeFiles/cmTC_a8bf7.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_a8bf7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8bf7.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion CMakeFiles/cmTC_a8bf7.dir/src.cxx.o -o cmTC_a8bf7 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WFORMAT_2 succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_aa50d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_aa50d.dir/build.make CMakeFiles/cmTC_aa50d.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_aa50d.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WFORMAT_2  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2   -Wformat=2 -std=c++17 -o CMakeFiles/cmTC_aa50d.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_aa50d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aa50d.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2 CMakeFiles/cmTC_aa50d.dir/src.cxx.o -o cmTC_aa50d 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WERROR succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_df48c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_df48c.dir/build.make CMakeFiles/cmTC_df48c.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_df48c.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WERROR  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror   -Werror -std=c++17 -o CMakeFiles/cmTC_df48c.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_df48c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_df48c.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror CMakeFiles/cmTC_df48c.dir/src.cxx.o -o cmTC_df48c 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1cab9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1cab9.dir/build.make CMakeFiles/cmTC_1cab9.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1cab9.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WSUGGEST_OVERRIDE  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override   -Wsuggest-override -std=c++17 -o CMakeFiles/cmTC_1cab9.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_1cab9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1cab9.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override CMakeFiles/cmTC_1cab9.dir/src.cxx.o -o cmTC_1cab9 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0b0f8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0b0f8.dir/build.make CMakeFiles/cmTC_0b0f8.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0b0f8.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_PEDANTIC  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic   -pedantic -std=c++17 -o CMakeFiles/cmTC_0b0f8.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0b0f8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b0f8.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic CMakeFiles/cmTC_0b0f8.dir/src.cxx.o -o cmTC_0b0f8 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC_ERRORS succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f860a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f860a.dir/build.make CMakeFiles/cmTC_f860a.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f860a.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_PEDANTIC_ERRORS  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors   -pedantic-errors -std=c++17 -o CMakeFiles/cmTC_f860a.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f860a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f860a.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors CMakeFiles/cmTC_f860a.dir/src.cxx.o -o cmTC_f860a 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FSTRICT_ALIASING succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_04592/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_04592.dir/build.make CMakeFiles/cmTC_04592.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_04592.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_FSTRICT_ALIASING  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing   -fstrict-aliasing -std=c++17 -o CMakeFiles/cmTC_04592.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_04592
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04592.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing CMakeFiles/cmTC_04592.dir/src.cxx.o -o cmTC_04592 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3ea2a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3ea2a.dir/build.make CMakeFiles/cmTC_3ea2a.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3ea2a.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations   -Wno-deprecated-declarations -std=c++17 -o CMakeFiles/cmTC_3ea2a.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3ea2a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ea2a.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations CMakeFiles/cmTC_3ea2a.dir/src.cxx.o -o cmTC_3ea2a 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_49969/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_49969.dir/build.make CMakeFiles/cmTC_49969.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_49969.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WNO_DEPRECATED  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated   -Wno-deprecated -std=c++17 -o CMakeFiles/cmTC_49969.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_49969
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49969.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated CMakeFiles/cmTC_49969.dir/src.cxx.o -o cmTC_49969 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FNO_EXCEPTIONS succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0485a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0485a.dir/build.make CMakeFiles/cmTC_0485a.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0485a.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_FNO_EXCEPTIONS  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions   -fno-exceptions -std=c++17 -o CMakeFiles/cmTC_0485a.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0485a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0485a.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions CMakeFiles/cmTC_0485a.dir/src.cxx.o -o cmTC_0485a 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSTRICT_ALIASING succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_abf6c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_abf6c.dir/build.make CMakeFiles/cmTC_abf6c.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_abf6c.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_WSTRICT_ALIASING  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions  -Wstrict-aliasing   -Wstrict-aliasing -std=c++17 -o CMakeFiles/cmTC_abf6c.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_abf6c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abf6c.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions  -Wstrict-aliasing CMakeFiles/cmTC_abf6c.dir/src.cxx.o -o cmTC_abf6c 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE succeeded with the following output:
+Change Dir: /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d5707/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d5707.dir/build.make CMakeFiles/cmTC_d5707.dir/build
+gmake[1]: Entering directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d5707.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_CXX_FLAG_COVERAGE  -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions  -Wstrict-aliasing  --coverage   --coverage -std=c++17 -o CMakeFiles/cmTC_d5707.dir/src.cxx.o -c /home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d5707
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5707.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Wconversion  -Wformat=2  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -fno-exceptions  -Wstrict-aliasing  --coverage CMakeFiles/cmTC_d5707.dir/src.cxx.o -o cmTC_d5707 
+gmake[1]: Leaving directory '/home/cloudshell-user/proj2-543/build_release/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

@@ -1,0 +1,50 @@
+--- threshold 800 ---
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 800
+
+Scalar path:  0.641088 ms  |  blocks skipped: 0
+SIMD path:    0.175163 ms  |  blocks skipped: 0
+Speedup: 3.65995x
+Results match: YES
+
+--- threshold 900 ---
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 900
+
+Scalar path:  0.675995 ms  |  blocks skipped: 30
+SIMD path:    0.185397 ms  |  blocks skipped: 30
+Speedup: 3.6462x
+Results match: YES
+
+--- threshold 950 ---
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 950
+
+Scalar path:  0.747535 ms  |  blocks skipped: 5902
+SIMD path:    0.264506 ms  |  blocks skipped: 5902
+Speedup: 2.82616x
+Results match: YES
+
+--- threshold 990 ---
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 990
+
+Scalar path:  4.10091 ms  |  blocks skipped: 366201
+SIMD path:    0.167556 ms  |  blocks skipped: 366201
+Speedup: 24.4749x
+Results match: YES
+
+--- threshold 999 ---
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 999
+
+Scalar path:  1.79567 ms  |  blocks skipped: 904976
+SIMD path:    0.242862 ms  |  blocks skipped: 904976
+Speedup: 7.39377x
+Results match: YES
+

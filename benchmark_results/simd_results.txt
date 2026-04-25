@@ -1,0 +1,13 @@
+=== SIMD AVX2 BitWeaving Benchmark — Google Cloud Shell x86_64 ===
+CPU: x86_64 with AVX2 + AVX512
+Blocks: 1,000,000 | Records per block: 100 | Values: uniform [0, 1000]
+
+Predicate: value > 990  | Scalar: 4.52ms | SIMD: 0.29ms | Speedup: 15.66x | Skipped: 366,201
+Predicate: value > 999  | Scalar: 2.25ms | SIMD: 0.24ms | Speedup:  9.26x | Skipped: 904,976
+Predicate: value > 800  | Scalar: 1.10ms | SIMD: 0.22ms | Speedup:  5.03x | Skipped:       0
+
+Results match (scalar == SIMD): YES on all runs
+
+Key finding: Stage 2 bitmask refinement (per-lane integer division) negates
+SIMD gains when run on all survivors. Pure ZoneMap AVX2 (MayMatchSIMDFast)
+delivers 5-15x speedup processing 8 blocks per _mm256_cmpgt_epi32 instruction.

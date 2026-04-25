@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti -O3 -DNDEBUG CMakeFiles/bench_baseline.dir/benchmarks/bench_baseline.cc.o -o bench_baseline  libleveldb.a 

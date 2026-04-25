@@ -309,6 +309,36 @@ class BitWeaveReader {
 
   // Scans all blocks and returns the indices of blocks that MAY match.
   // Uses MayMatchSIMD() in steps of 8 (AVX2), falls back to scalar otherwise.
+
+  // ZoneMap-only SIMD — no bitmask stage 2. Pure AVX2 speed measurement.
+  uint8_t MayMatchSIMDFast(uint32_t start_block, uint32_t threshold,
+                            char op) const {
+#ifdef __AVX2__
+    const __m256i flip = _mm256_set1_epi32((int)0x80000000u);
+    __m256i thresh_flip =
+        _mm256_xor_si256(_mm256_set1_epi32((int)threshold), flip);
+    if (op == '>') {
+      __m256i bmax_vec = _mm256_xor_si256(
+          _mm256_loadu_si256(
+              reinterpret_cast<const __m256i*>(max_data_ + start_block)),
+          flip);
+      __m256i cmp = _mm256_cmpgt_epi32(bmax_vec, thresh_flip);
+      return (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+    }
+    __m256i bmin_vec = _mm256_xor_si256(
+        _mm256_loadu_si256(
+            reinterpret_cast<const __m256i*>(min_data_ + start_block)),
+        flip);
+    __m256i cmp = _mm256_cmpgt_epi32(thresh_flip, bmin_vec);
+    return (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+#else
+    uint8_t r = 0;
+    for (int i = 0; i < 8; i++)
+      if (MayMatch(start_block+i, threshold, op)) r |= (1<<i);
+    return r;
+#endif
+  }
+
   std::vector<uint32_t> MayMatchBatch(uint32_t threshold, char op) const {
     std::vector<uint32_t> result;
     if (!valid()) return result;
