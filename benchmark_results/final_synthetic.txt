@@ -1,0 +1,144 @@
+
+================================================================================
+BitWeaving Evaluation Framework
+================================================================================
+
+[1/5] Uniform Distribution (0-999)...
+
+================================================================================
+Benchmark: Uniform: value > 800
+================================================================================
+Total Records:           50000
+True Matches:            9950
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.82 ms
+
+With BitWeaving:
+  Records Scanned:       13244
+  Latency:               1.05 ms
+
+Improvement:
+  I/O Reduction:         73.51%
+  Latency Speedup:       3.63x
+
+[2/5] Skewed Distribution (most values 0-100, few > 800)...
+
+================================================================================
+Benchmark: Skewed: value > 800
+================================================================================
+Total Records:           50000
+True Matches:            500
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.77 ms
+
+With BitWeaving:
+  Records Scanned:       32775
+  Latency:               2.47 ms
+
+Improvement:
+  I/O Reduction:         34.45%
+  Latency Speedup:       1.53x
+
+[3/5] Two-Peak Distribution (0-100 and 900-999)...
+
+================================================================================
+Benchmark: Bimodal: value > 800
+================================================================================
+Total Records:           50000
+True Matches:            25000
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.72 ms
+
+With BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.76 ms
+
+Improvement:
+  I/O Reduction:         0.00%
+  Latency Speedup:       0.99x
+
+[4/5] Multiple Predicates (same uniform data)...
+
+================================================================================
+Benchmark: Uniform: value > 500
+================================================================================
+Total Records:           50000
+True Matches:            24950
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.67 ms
+
+With BitWeaving:
+  Records Scanned:       28124
+  Latency:               2.10 ms
+
+Improvement:
+  I/O Reduction:         43.75%
+  Latency Speedup:       1.75x
+
+================================================================================
+Benchmark: Uniform: value < 200
+================================================================================
+Total Records:           50000
+True Matches:            10000
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.61 ms
+
+With BitWeaving:
+  Records Scanned:       12888
+  Latency:               1.01 ms
+
+Improvement:
+  I/O Reduction:         74.22%
+  Latency Speedup:       3.58x
+
+================================================================================
+Benchmark: Uniform: value > 900
+================================================================================
+Total Records:           50000
+True Matches:            4950
+
+Without BitWeaving:
+  Records Scanned:       50000
+  Latency:               3.69 ms
+
+With BitWeaving:
+  Records Scanned:       8532
+  Latency:               0.69 ms
+
+Improvement:
+  I/O Reduction:         82.94%
+  Latency Speedup:       5.38x
+
+[5/5] Scalability (100K records)...
+
+================================================================================
+Benchmark: Scalability: 100K records, value > 800
+================================================================================
+Total Records:           100000
+True Matches:            19900
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.51 ms
+
+With BitWeaving:
+  Records Scanned:       26488
+  Latency:               2.13 ms
+
+Improvement:
+  I/O Reduction:         73.51%
+  Latency Speedup:       3.53x
+
+================================================================================
+Evaluation Complete!
+================================================================================

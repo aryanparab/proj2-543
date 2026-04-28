@@ -13,6 +13,8 @@
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/bitweave_consumer.dir
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/bitweave_datagen.dir
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/bitweave_simd_bench.dir
+/home/cloudshell-user/proj2-543/build_release/CMakeFiles/bitweave_combined_bench.dir
+/home/cloudshell-user/proj2-543/build_release/CMakeFiles/bitweave_bitmask_bench.dir
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/test.dir
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/edit_cache.dir
 /home/cloudshell-user/proj2-543/build_release/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,141 @@
+
+================================================================================
+BitWeaving Real-World Benchmark Suite
+Testing on realistic time-series and sensor data
+================================================================================
+
+[1/6] IoT Temperature Sensor Data...
+
+================================================================================
+Benchmark: IoT Temp Anomaly Detection
+Description: Temperature sensor: detect readings > 35°C (anomalies)
+================================================================================
+Total Records:           100000
+True Matches:            1895 (1.90%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.10 ms
+
+With BitWeaving:
+  Records Scanned:       71015
+  Latency:               5.04 ms
+
+Improvement:
+  I/O Reduction:         28.98%
+  Latency Speedup:       1.41x
+
+[2/6] Network Latency Logs...
+
+================================================================================
+Benchmark: Network Latency SLO Violation
+Description: Network logs: detect requests > 500ms (SLO violation)
+================================================================================
+Total Records:           100000
+True Matches:            4861 (4.86%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.48 ms
+
+With BitWeaving:
+  Records Scanned:       95966
+  Latency:               7.10 ms
+
+Improvement:
+  I/O Reduction:         4.03%
+  Latency Speedup:       1.05x
+
+[3/6] CPU Usage Monitoring...
+
+================================================================================
+Benchmark: CPU High Load Detection
+Description: CPU monitoring: detect periods > 80% utilization
+================================================================================
+Total Records:           100000
+True Matches:            4698 (4.70%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.20 ms
+
+With BitWeaving:
+  Records Scanned:       95610
+  Latency:               7.43 ms
+
+Improvement:
+  I/O Reduction:         4.39%
+  Latency Speedup:       0.97x
+
+[4/6] Database Query Response Times...
+
+================================================================================
+Benchmark: Database Slow Query Detection
+Description: DB logs: detect queries > 100ms (slow)
+================================================================================
+Total Records:           100000
+True Matches:            36607 (36.61%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.59 ms
+
+With BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.55 ms
+
+Improvement:
+  I/O Reduction:         0.00%
+  Latency Speedup:       1.01x
+
+[5/6] Application Memory Usage...
+
+================================================================================
+Benchmark: Memory Leak Detection
+Description: App monitoring: detect memory > 400MB (potential leak)
+================================================================================
+Total Records:           100000
+True Matches:            39803 (39.80%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.34 ms
+
+With BitWeaving:
+  Records Scanned:       42030
+  Latency:               3.10 ms
+
+Improvement:
+  I/O Reduction:         57.97%
+  Latency Speedup:       2.37x
+
+[6/6] Disk I/O Throughput...
+
+================================================================================
+Benchmark: High Disk I/O Detection
+Description: I/O logs: detect throughput > 300 MB/s (unusual)
+================================================================================
+Total Records:           100000
+True Matches:            10000 (10.00%)
+
+Without BitWeaving:
+  Records Scanned:       100000
+  Latency:               7.29 ms
+
+With BitWeaving:
+  Records Scanned:       10624
+  Latency:               0.91 ms
+
+Improvement:
+  I/O Reduction:         89.38%
+  Latency Speedup:       8.04x
+
+================================================================================
+Real-World Evaluation Complete!
+
+Key Insights:
+- Anomaly detection queries benefit most from BitWeaving
+- Time-series data often has temporal clustering (values in order)
+- BitWeaving excels at filtering 'normal' blocks in skewed distributions
+- Query selectivity (% matches) determines I/O reduction
+================================================================================

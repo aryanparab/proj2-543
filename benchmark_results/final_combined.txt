@@ -1,0 +1,44 @@
+
+========================================================================
+Combined ZoneMap + SIMD Benchmark — 10M temporal records
+Database: /tmp/bw_10m_temp
+========================================================================
+
+========================================================================
+IoT anomaly detection  (temp > 35)  (threshold 35)
+========================================================================
+  Records:          10000000  |  Matches: 100000 (1.00%)
+
+  Baseline scan:    728.55 ms
+  ZoneMap scan:     22.67 ms  (32.14x speedup)
+
+  SIMD header scan: 0.05 ms  across 156250 blocks
+  Blocks skipped:   144166 / 156250 (92.27% skipped)
+
+========================================================================
+Peak hours detection   (temp > 30)  (threshold 30)
+========================================================================
+  Records:          10000000  |  Matches: 445310 (4.45%)
+
+  Baseline scan:    804.22 ms
+  ZoneMap scan:     142.16 ms  (5.66x speedup)
+
+  SIMD header scan: 0.07 ms  across 156250 blocks
+  Blocks skipped:   107566 / 156250 (68.84% skipped)
+
+========================================================================
+Night hours filter     (temp < 20)  (threshold 20)
+========================================================================
+  Records:          10000000  |  Matches: 3163943 (31.64%)
+
+  Baseline scan:    688.62 ms
+  ZoneMap scan:     456.57 ms  (1.51x speedup)
+
+  SIMD header scan: 0.05 ms  across 156250 blocks
+  Blocks skipped:   113307 / 156250 (72.52% skipped)
+
+========================================================================
+Key: ZoneMap speedup = end-to-end query time improvement
+     SIMD header scan = metadata evaluation time at 10M scale
+========================================================================
+

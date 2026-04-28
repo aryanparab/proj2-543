@@ -1,0 +1,45 @@
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 800
+
+Scalar path:  0.644464 ms  |  blocks skipped: 0
+SIMD path:    0.259624 ms  |  blocks skipped: 0
+Speedup: 2.4823x
+Results match: YES
+
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 900
+
+Scalar path:  0.644479 ms  |  blocks skipped: 30
+SIMD path:    0.172078 ms  |  blocks skipped: 30
+Speedup: 3.74527x
+Results match: YES
+
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 950
+
+Scalar path:  0.737708 ms  |  blocks skipped: 5902
+SIMD path:    0.251295 ms  |  blocks skipped: 5902
+Speedup: 2.93563x
+Results match: YES
+
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 990
+
+Scalar path:  4.14784 ms  |  blocks skipped: 366201
+SIMD path:    0.247644 ms  |  blocks skipped: 366201
+Speedup: 16.7492x
+Results match: YES
+
+
+=== SIMD BitWeaving Benchmark ===
+Blocks: 1000000  |  Predicate: value > 999
+
+Scalar path:  1.81618 ms  |  blocks skipped: 904976
+SIMD path:    0.249661 ms  |  blocks skipped: 904976
+Speedup: 7.2746x
+Results match: YES
+

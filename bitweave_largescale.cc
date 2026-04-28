@@ -253,9 +253,9 @@ int main(int argc, char** argv) {
       static std::normal_distribution<> normal_dist(25, 3);
       
       if (gen() % 100 < 2) {
-        return 35 + (gen() % 20);  // 2% anomalies
+        return (uint32_t)(35 + (gen() % 20));  // 2% anomalies
       }
-      return (uint32_t)std::max(0.0, normal_dist(gen));
+      return (uint32_t)(int)std::max(0.0, normal_dist(gen));
     });
     
     std::cout << "  Compacting...\n";
@@ -278,9 +278,9 @@ int main(int argc, char** argv) {
       static std::normal_distribution<> normal_dist(25, 3);
       
       if (gen() % 100 < 2) {
-        return 35 + (gen() % 20);
+        return (uint32_t)(35 + (gen() % 20));
       }
-      return (uint32_t)std::max(0.0, normal_dist(gen));
+      return (uint32_t)(int)std::max(0.0, normal_dist(gen));
     });
     
     std::cout << "  Compacting...\n";
@@ -303,9 +303,9 @@ int main(int argc, char** argv) {
       static std::gamma_distribution<> gamma_dist(2.0, 10.0);
       
       if (gen() % 100 < 5) {
-        return 500 + (gen() % 2000);
+        return (uint32_t)(500 + (gen() % 2000));
       }
-      return (uint32_t)std::min(500.0, gamma_dist(gen));
+      return (uint32_t)(int)std::min(500.0, gamma_dist(gen));
     }, false);  // Don't print progress for large dataset
     
     std::cout << "  Compacting...\n";
@@ -351,9 +351,9 @@ int main(int argc, char** argv) {
       static std::normal_distribution<> normal_dist(50, 10);
       
       if (gen() % 100 < 5) {
-        return 80 + (gen() % 20);
+        return (uint32_t)(80 + (gen() % 20));
       }
-      return (uint32_t)std::max(0.0, std::min(100.0, normal_dist(gen)));
+      return (uint32_t)(int)std::max(0.0, std::min(100.0, normal_dist(gen)));
     }, false);
     
     std::cout << "  Compacting...\n";

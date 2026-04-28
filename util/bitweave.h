@@ -339,6 +339,103 @@ class BitWeaveReader {
 #endif
   }
 
+
+  // MayMatchBitmaskSIMD — ZoneMap SIMD + bitmask SIMD in two passes.
+  // Stage 1: _mm256_cmpgt_epi32 on 8 block_max values (ZoneMap)
+  // Stage 2: _mm256_and_si256 on 8 bitmasks vs pre-computed query_mask
+  //
+  // query_mask is computed ONCE per query by the caller:
+  //   uint32_t query_mask = (threshold == 0) ? 0xFFFFFFFFu
+  //                       : (0xFFFFFFFFu << approx_band);
+  // where approx_band = bw_value_to_band(threshold, global_min, global_max)
+  //
+  // No per-block division — one AND + one test per 8 blocks.
+  // More false positives than per-block local bands, but fully vectorized.
+  uint8_t MayMatchBitmaskSIMD(uint32_t start_block,
+                               uint32_t threshold,
+                               uint32_t query_mask,
+                               char op) const {
+#ifdef __AVX2__
+    const __m256i flip = _mm256_set1_epi32((int)0x80000000u);
+    __m256i thresh_flip =
+        _mm256_xor_si256(_mm256_set1_epi32((int)threshold), flip);
+
+    // Stage 1: ZoneMap — same as MayMatchSIMDFast
+    uint8_t zonemap_bits = 0;
+    if (op == '>') {
+      __m256i bmax_vec = _mm256_xor_si256(
+          _mm256_loadu_si256(
+              reinterpret_cast<const __m256i*>(max_data_ + start_block)),
+          flip);
+      __m256i cmp = _mm256_cmpgt_epi32(bmax_vec, thresh_flip);
+      zonemap_bits = (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+    } else {
+      __m256i bmin_vec = _mm256_xor_si256(
+          _mm256_loadu_si256(
+              reinterpret_cast<const __m256i*>(min_data_ + start_block)),
+          flip);
+      __m256i cmp = _mm256_cmpgt_epi32(thresh_flip, bmin_vec);
+      zonemap_bits = (uint8_t)_mm256_movemask_ps(_mm256_castsi256_ps(cmp));
+    }
+
+    // All 8 blocks skipped by ZoneMap — done
+    if (zonemap_bits == 0) return 0;
+
+    // Stage 2: Bitmask — AND all 8 bitmasks vs query_mask in one instruction
+    __m256i mask_vec   = _mm256_loadu_si256(
+        reinterpret_cast<const __m256i*>(mask_data_ + start_block));
+    __m256i qmask_vec  = _mm256_set1_epi32((int)query_mask);
+    __m256i anded      = _mm256_and_si256(mask_vec, qmask_vec);
+
+    // Extract which lanes are nonzero — nonzero = block might match
+    // Use _mm256_cmpeq_epi32 against zero to find zero lanes
+    __m256i zero       = _mm256_setzero_si256();
+    __m256i is_zero    = _mm256_cmpeq_epi32(anded, zero);
+    uint8_t zero_bits  = (uint8_t)_mm256_movemask_ps(
+        _mm256_castsi256_ps(is_zero));
+    uint8_t nonzero_bits = (~zero_bits) & 0xFF;  // nonzero = may match
+
+    // Final result: must pass BOTH ZoneMap AND bitmask
+    return zonemap_bits & nonzero_bits;
+#else
+    // scalar fallback
+    uint8_t result = 0;
+    for (int i = 0; i < 8; i++) {
+      uint32_t idx = start_block + (uint32_t)i;
+      if (idx >= num_blocks_) break;
+      if (!MayMatch(idx, threshold, op)) continue;
+      // bitmask check
+      if (mask_data_[idx] & query_mask) result |= (1 << i);
+    }
+    return result;
+#endif
+  }
+
+  // Helper: compute the global query_mask for a threshold.
+  // Uses the min/max of the first and last block as an approximation
+  // of the dataset range. Call once per query, pass result to
+  // MayMatchBitmaskSIMD().
+  uint32_t ComputeQueryMask(uint32_t threshold, char op) const {
+    if (num_blocks_ == 0) return 0xFFFFFFFFu;
+    // approximate global range from first + last block
+    uint32_t global_min = min_data_[0];
+    uint32_t global_max = max_data_[0];
+    for (uint32_t i = 1; i < num_blocks_ && i < 32; i++) {
+      if (min_data_[i] < global_min) global_min = min_data_[i];
+      if (max_data_[i] > global_max) global_max = max_data_[i];
+    }
+    if (global_max <= global_min) return 0xFFFFFFFFu;
+    if (op == '>') {
+      int lo_band = bw_value_to_band(threshold, global_min, global_max);
+      if (lo_band <= 0) return 0xFFFFFFFFu;
+      return 0xFFFFFFFFu << lo_band;
+    } else {
+      int hi_band = bw_value_to_band(threshold, global_min, global_max);
+      if (hi_band >= 31) return 0xFFFFFFFFu;
+      return (1u << (hi_band + 1)) - 1u;
+    }
+  }
+
   std::vector<uint32_t> MayMatchBatch(uint32_t threshold, char op) const {
     std::vector<uint32_t> result;
     if (!valid()) return result;

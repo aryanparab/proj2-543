@@ -250,11 +250,12 @@ Iterator* Table::BlockReader(void* arg, const ReadOptions& options,
   auto it = table->rep_->offset_to_block_index.find(handle.offset());
   if (it != table->rep_->offset_to_block_index.end()) {
     uint32_t block_index = it->second;
-    bool may_match = table->rep_->bw_reader.MayMatch(block_index, options.bw_predicate, options.bw_op);
+    bool may_match = table->rep_->bw_reader.MayMatch(
+        block_index, options.bw_predicate, options.bw_op);
     if (!may_match) {
       return NewEmptyIterator();
     }
-  } 
+  }
 }
   // -----------------------------------------------------------------
 

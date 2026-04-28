@@ -367,6 +367,32 @@ bitweave_simd_bench/fast:
 .PHONY : bitweave_simd_bench/fast
 
 #=============================================================================
+# Target rules for targets named bitweave_combined_bench
+
+# Build rule for target.
+bitweave_combined_bench: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bitweave_combined_bench
+.PHONY : bitweave_combined_bench
+
+# fast build rule for target.
+bitweave_combined_bench/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/build
+.PHONY : bitweave_combined_bench/fast
+
+#=============================================================================
+# Target rules for targets named bitweave_bitmask_bench
+
+# Build rule for target.
+bitweave_bitmask_bench: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bitweave_bitmask_bench
+.PHONY : bitweave_bitmask_bench
+
+# fast build rule for target.
+bitweave_bitmask_bench/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/build
+.PHONY : bitweave_bitmask_bench/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -515,6 +541,54 @@ bitweave_benchmark.s: bitweave_benchmark.cc.s
 bitweave_benchmark.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_benchmark.dir/build.make CMakeFiles/bitweave_benchmark.dir/bitweave_benchmark.cc.s
 .PHONY : bitweave_benchmark.cc.s
+
+bitweave_bitmask_bench.o: bitweave_bitmask_bench.cc.o
+.PHONY : bitweave_bitmask_bench.o
+
+# target to build an object file
+bitweave_bitmask_bench.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/bitweave_bitmask_bench.cc.o
+.PHONY : bitweave_bitmask_bench.cc.o
+
+bitweave_bitmask_bench.i: bitweave_bitmask_bench.cc.i
+.PHONY : bitweave_bitmask_bench.i
+
+# target to preprocess a source file
+bitweave_bitmask_bench.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/bitweave_bitmask_bench.cc.i
+.PHONY : bitweave_bitmask_bench.cc.i
+
+bitweave_bitmask_bench.s: bitweave_bitmask_bench.cc.s
+.PHONY : bitweave_bitmask_bench.s
+
+# target to generate assembly for a file
+bitweave_bitmask_bench.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/bitweave_bitmask_bench.cc.s
+.PHONY : bitweave_bitmask_bench.cc.s
+
+bitweave_combined_bench.o: bitweave_combined_bench.cc.o
+.PHONY : bitweave_combined_bench.o
+
+# target to build an object file
+bitweave_combined_bench.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/bitweave_combined_bench.cc.o
+.PHONY : bitweave_combined_bench.cc.o
+
+bitweave_combined_bench.i: bitweave_combined_bench.cc.i
+.PHONY : bitweave_combined_bench.i
+
+# target to preprocess a source file
+bitweave_combined_bench.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/bitweave_combined_bench.cc.i
+.PHONY : bitweave_combined_bench.cc.i
+
+bitweave_combined_bench.s: bitweave_combined_bench.cc.s
+.PHONY : bitweave_combined_bench.s
+
+# target to generate assembly for a file
+bitweave_combined_bench.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/bitweave_combined_bench.cc.s
+.PHONY : bitweave_combined_bench.cc.s
 
 bitweave_consumer.o: bitweave_consumer.cc.o
 .PHONY : bitweave_consumer.o
@@ -2297,6 +2371,8 @@ help:
 	@echo "... benchmark"
 	@echo "... benchmark_main"
 	@echo "... bitweave_benchmark"
+	@echo "... bitweave_bitmask_bench"
+	@echo "... bitweave_combined_bench"
 	@echo "... bitweave_consumer"
 	@echo "... bitweave_datagen"
 	@echo "... bitweave_largescale"
@@ -2323,6 +2399,12 @@ help:
 	@echo "... bitweave_benchmark.o"
 	@echo "... bitweave_benchmark.i"
 	@echo "... bitweave_benchmark.s"
+	@echo "... bitweave_bitmask_bench.o"
+	@echo "... bitweave_bitmask_bench.i"
+	@echo "... bitweave_bitmask_bench.s"
+	@echo "... bitweave_combined_bench.o"
+	@echo "... bitweave_combined_bench.i"
+	@echo "... bitweave_combined_bench.s"
 	@echo "... bitweave_consumer.o"
 	@echo "... bitweave_consumer.i"
 	@echo "... bitweave_consumer.s"
