@@ -80,6 +80,7 @@ all: CMakeFiles/bitweave_datagen.dir/all
 all: CMakeFiles/bitweave_simd_bench.dir/all
 all: CMakeFiles/bitweave_combined_bench.dir/all
 all: CMakeFiles/bitweave_bitmask_bench.dir/all
+all: CMakeFiles/bitweave_equality_bench.dir/all
 all: third_party/googletest/all
 all: third_party/benchmark/all
 .PHONY : all
@@ -107,6 +108,7 @@ clean: CMakeFiles/bitweave_datagen.dir/clean
 clean: CMakeFiles/bitweave_simd_bench.dir/clean
 clean: CMakeFiles/bitweave_combined_bench.dir/clean
 clean: CMakeFiles/bitweave_bitmask_bench.dir/clean
+clean: CMakeFiles/bitweave_equality_bench.dir/clean
 clean: third_party/googletest/clean
 clean: third_party/benchmark/clean
 .PHONY : clean
@@ -201,12 +203,12 @@ third_party/googletest/googletest/clean: third_party/googletest/googletest/CMake
 CMakeFiles/leveldb.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/leveldb.dir/build.make CMakeFiles/leveldb.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/leveldb.dir/build.make CMakeFiles/leveldb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79 "Built target leveldb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79 "Built target leveldb"
 .PHONY : CMakeFiles/leveldb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/leveldb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/leveldb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/leveldb.dir/rule
@@ -232,7 +234,7 @@ CMakeFiles/leveldbutil.dir/all: CMakeFiles/leveldb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/leveldbutil.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/leveldbutil.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/leveldbutil.dir/rule
@@ -261,7 +263,7 @@ CMakeFiles/leveldb_tests.dir/all: third_party/googletest/googletest/CMakeFiles/g
 
 # Build rule for subdir invocation for target.
 CMakeFiles/leveldb_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 55
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 54
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/leveldb_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/leveldb_tests.dir/rule
@@ -284,12 +286,12 @@ CMakeFiles/c_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.di
 CMakeFiles/c_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_test.dir/build.make CMakeFiles/c_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_test.dir/build.make CMakeFiles/c_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=35,36,37 "Built target c_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=36,37,38 "Built target c_test"
 .PHONY : CMakeFiles/c_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/c_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 37
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/c_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/c_test.dir/rule
@@ -312,12 +314,12 @@ CMakeFiles/env_posix_test.dir/all: third_party/googletest/googlemock/CMakeFiles/
 CMakeFiles/env_posix_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/env_posix_test.dir/build.make CMakeFiles/env_posix_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/env_posix_test.dir/build.make CMakeFiles/env_posix_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=41,42 "Built target env_posix_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=42,43 "Built target env_posix_test"
 .PHONY : CMakeFiles/env_posix_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/env_posix_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 37
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/env_posix_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/env_posix_test.dir/rule
@@ -341,12 +343,12 @@ CMakeFiles/db_bench.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.
 CMakeFiles/db_bench.dir/all: third_party/benchmark/src/CMakeFiles/benchmark.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/db_bench.dir/build.make CMakeFiles/db_bench.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/db_bench.dir/build.make CMakeFiles/db_bench.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=38,39,40 "Built target db_bench"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=39,40,41 "Built target db_bench"
 .PHONY : CMakeFiles/db_bench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/db_bench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 54
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 52
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/db_bench.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/db_bench.dir/rule
@@ -372,7 +374,7 @@ CMakeFiles/bench_baseline.dir/all: CMakeFiles/leveldb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bench_baseline.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bench_baseline.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bench_baseline.dir/rule
@@ -396,12 +398,12 @@ CMakeFiles/bitweave_test.dir/all: third_party/googletest/googletest/CMakeFiles/g
 CMakeFiles/bitweave_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_test.dir/build.make CMakeFiles/bitweave_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_test.dir/build.make CMakeFiles/bitweave_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=33,34 "Built target bitweave_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=34,35 "Built target bitweave_test"
 .PHONY : CMakeFiles/bitweave_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 37
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_test.dir/rule
@@ -422,12 +424,12 @@ CMakeFiles/bitweave_test.dir/clean:
 CMakeFiles/bitweave_benchmark.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_benchmark.dir/build.make CMakeFiles/bitweave_benchmark.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_benchmark.dir/build.make CMakeFiles/bitweave_benchmark.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=19,20 "Built target bitweave_benchmark"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=19 "Built target bitweave_benchmark"
 .PHONY : CMakeFiles/bitweave_benchmark.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_benchmark.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_benchmark.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_benchmark.dir/rule
@@ -448,12 +450,12 @@ CMakeFiles/bitweave_benchmark.dir/clean:
 CMakeFiles/bitweave_realworld.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_realworld.dir/build.make CMakeFiles/bitweave_realworld.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_realworld.dir/build.make CMakeFiles/bitweave_realworld.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=30,31 "Built target bitweave_realworld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=31,32 "Built target bitweave_realworld"
 .PHONY : CMakeFiles/bitweave_realworld.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_realworld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_realworld.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_realworld.dir/rule
@@ -474,7 +476,7 @@ CMakeFiles/bitweave_realworld.dir/clean:
 CMakeFiles/bitweave_largescale.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_largescale.dir/build.make CMakeFiles/bitweave_largescale.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_largescale.dir/build.make CMakeFiles/bitweave_largescale.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=27 "Built target bitweave_largescale"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=28,29 "Built target bitweave_largescale"
 .PHONY : CMakeFiles/bitweave_largescale.dir/all
 
 # Build rule for subdir invocation for target.
@@ -500,12 +502,12 @@ CMakeFiles/bitweave_largescale.dir/clean:
 CMakeFiles/bitweave_producer.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_producer.dir/build.make CMakeFiles/bitweave_producer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_producer.dir/build.make CMakeFiles/bitweave_producer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=28,29 "Built target bitweave_producer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=30 "Built target bitweave_producer"
 .PHONY : CMakeFiles/bitweave_producer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_producer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_producer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_producer.dir/rule
@@ -526,7 +528,7 @@ CMakeFiles/bitweave_producer.dir/clean:
 CMakeFiles/bitweave_consumer.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_consumer.dir/build.make CMakeFiles/bitweave_consumer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_consumer.dir/build.make CMakeFiles/bitweave_consumer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=24 "Built target bitweave_consumer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=23,24 "Built target bitweave_consumer"
 .PHONY : CMakeFiles/bitweave_consumer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -552,12 +554,12 @@ CMakeFiles/bitweave_consumer.dir/clean:
 CMakeFiles/bitweave_datagen.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_datagen.dir/build.make CMakeFiles/bitweave_datagen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_datagen.dir/build.make CMakeFiles/bitweave_datagen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=25,26 "Built target bitweave_datagen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=25 "Built target bitweave_datagen"
 .PHONY : CMakeFiles/bitweave_datagen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_datagen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_datagen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_datagen.dir/rule
@@ -578,12 +580,12 @@ CMakeFiles/bitweave_datagen.dir/clean:
 CMakeFiles/bitweave_simd_bench.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_simd_bench.dir/build.make CMakeFiles/bitweave_simd_bench.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_simd_bench.dir/build.make CMakeFiles/bitweave_simd_bench.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=32 "Built target bitweave_simd_bench"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=33 "Built target bitweave_simd_bench"
 .PHONY : CMakeFiles/bitweave_simd_bench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_simd_bench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_simd_bench.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_simd_bench.dir/rule
@@ -604,12 +606,12 @@ CMakeFiles/bitweave_simd_bench.dir/clean:
 CMakeFiles/bitweave_combined_bench.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_combined_bench.dir/build.make CMakeFiles/bitweave_combined_bench.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=22,23 "Built target bitweave_combined_bench"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=22 "Built target bitweave_combined_bench"
 .PHONY : CMakeFiles/bitweave_combined_bench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bitweave_combined_bench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_combined_bench.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : CMakeFiles/bitweave_combined_bench.dir/rule
@@ -630,7 +632,7 @@ CMakeFiles/bitweave_combined_bench.dir/clean:
 CMakeFiles/bitweave_bitmask_bench.dir/all: CMakeFiles/leveldb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_bitmask_bench.dir/build.make CMakeFiles/bitweave_bitmask_bench.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=21 "Built target bitweave_bitmask_bench"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=20,21 "Built target bitweave_bitmask_bench"
 .PHONY : CMakeFiles/bitweave_bitmask_bench.dir/all
 
 # Build rule for subdir invocation for target.
@@ -650,13 +652,39 @@ CMakeFiles/bitweave_bitmask_bench.dir/clean:
 .PHONY : CMakeFiles/bitweave_bitmask_bench.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/bitweave_equality_bench.dir
+
+# All Build rule for target.
+CMakeFiles/bitweave_equality_bench.dir/all: CMakeFiles/leveldb.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=26,27 "Built target bitweave_equality_bench"
+.PHONY : CMakeFiles/bitweave_equality_bench.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/bitweave_equality_bench.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 32
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bitweave_equality_bench.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
+.PHONY : CMakeFiles/bitweave_equality_bench.dir/rule
+
+# Convenience name for target.
+bitweave_equality_bench: CMakeFiles/bitweave_equality_bench.dir/rule
+.PHONY : bitweave_equality_bench
+
+# clean rule for target.
+CMakeFiles/bitweave_equality_bench.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/clean
+.PHONY : CMakeFiles/bitweave_equality_bench.dir/clean
+
+#=============================================================================
 # Target rules for target third_party/googletest/googlemock/CMakeFiles/gmock.dir
 
 # All Build rule for target.
 third_party/googletest/googlemock/CMakeFiles/gmock.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googlemock/CMakeFiles/gmock.dir/build.make third_party/googletest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googlemock/CMakeFiles/gmock.dir/build.make third_party/googletest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=43,44 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=44,45 "Built target gmock"
 .PHONY : third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -683,7 +711,7 @@ third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all: third_party/goo
 third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=45 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=46 "Built target gmock_main"
 .PHONY : third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -709,7 +737,7 @@ third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
 third_party/googletest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googletest/CMakeFiles/gtest.dir/build.make third_party/googletest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googletest/CMakeFiles/gtest.dir/build.make third_party/googletest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=46,47 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=47,48 "Built target gtest"
 .PHONY : third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -735,7 +763,7 @@ third_party/googletest/googletest/CMakeFiles/gtest.dir/clean:
 third_party/googletest/googletest/CMakeFiles/gtest_main.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googletest/CMakeFiles/gtest_main.dir/build.make third_party/googletest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/googletest/googletest/CMakeFiles/gtest_main.dir/build.make third_party/googletest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=48 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=49 "Built target gtest_main"
 .PHONY : third_party/googletest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -761,12 +789,12 @@ third_party/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 third_party/benchmark/src/CMakeFiles/benchmark.dir/all:
 	$(MAKE) $(MAKESILENT) -f third_party/benchmark/src/CMakeFiles/benchmark.dir/build.make third_party/benchmark/src/CMakeFiles/benchmark.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/benchmark/src/CMakeFiles/benchmark.dir/build.make third_party/benchmark/src/CMakeFiles/benchmark.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target benchmark"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target benchmark"
 .PHONY : third_party/benchmark/src/CMakeFiles/benchmark.dir/all
 
 # Build rule for subdir invocation for target.
 third_party/benchmark/src/CMakeFiles/benchmark.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 third_party/benchmark/src/CMakeFiles/benchmark.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloudshell-user/proj2-543/build_release/CMakeFiles 0
 .PHONY : third_party/benchmark/src/CMakeFiles/benchmark.dir/rule
@@ -787,7 +815,7 @@ third_party/benchmark/src/CMakeFiles/benchmark.dir/clean:
 third_party/benchmark/src/CMakeFiles/benchmark_main.dir/all: third_party/benchmark/src/CMakeFiles/benchmark.dir/all
 	$(MAKE) $(MAKESILENT) -f third_party/benchmark/src/CMakeFiles/benchmark_main.dir/build.make third_party/benchmark/src/CMakeFiles/benchmark_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f third_party/benchmark/src/CMakeFiles/benchmark_main.dir/build.make third_party/benchmark/src/CMakeFiles/benchmark_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=18 "Built target benchmark_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cloudshell-user/proj2-543/build_release/CMakeFiles --progress-num=17,18 "Built target benchmark_main"
 .PHONY : third_party/benchmark/src/CMakeFiles/benchmark_main.dir/all
 
 # Build rule for subdir invocation for target.

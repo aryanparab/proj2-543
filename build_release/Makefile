@@ -393,6 +393,19 @@ bitweave_bitmask_bench/fast:
 .PHONY : bitweave_bitmask_bench/fast
 
 #=============================================================================
+# Target rules for targets named bitweave_equality_bench
+
+# Build rule for target.
+bitweave_equality_bench: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bitweave_equality_bench
+.PHONY : bitweave_equality_bench
+
+# fast build rule for target.
+bitweave_equality_bench/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/build
+.PHONY : bitweave_equality_bench/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -637,6 +650,30 @@ bitweave_datagen_10M.s: bitweave_datagen_10M.cc.s
 bitweave_datagen_10M.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_datagen.dir/build.make CMakeFiles/bitweave_datagen.dir/bitweave_datagen_10M.cc.s
 .PHONY : bitweave_datagen_10M.cc.s
+
+bitweave_equality_bench.o: bitweave_equality_bench.cc.o
+.PHONY : bitweave_equality_bench.o
+
+# target to build an object file
+bitweave_equality_bench.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/bitweave_equality_bench.cc.o
+.PHONY : bitweave_equality_bench.cc.o
+
+bitweave_equality_bench.i: bitweave_equality_bench.cc.i
+.PHONY : bitweave_equality_bench.i
+
+# target to preprocess a source file
+bitweave_equality_bench.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/bitweave_equality_bench.cc.i
+.PHONY : bitweave_equality_bench.cc.i
+
+bitweave_equality_bench.s: bitweave_equality_bench.cc.s
+.PHONY : bitweave_equality_bench.s
+
+# target to generate assembly for a file
+bitweave_equality_bench.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bitweave_equality_bench.dir/build.make CMakeFiles/bitweave_equality_bench.dir/bitweave_equality_bench.cc.s
+.PHONY : bitweave_equality_bench.cc.s
 
 bitweave_largescale.o: bitweave_largescale.cc.o
 .PHONY : bitweave_largescale.o
@@ -2375,6 +2412,7 @@ help:
 	@echo "... bitweave_combined_bench"
 	@echo "... bitweave_consumer"
 	@echo "... bitweave_datagen"
+	@echo "... bitweave_equality_bench"
 	@echo "... bitweave_largescale"
 	@echo "... bitweave_producer"
 	@echo "... bitweave_realworld"
@@ -2411,6 +2449,9 @@ help:
 	@echo "... bitweave_datagen_10M.o"
 	@echo "... bitweave_datagen_10M.i"
 	@echo "... bitweave_datagen_10M.s"
+	@echo "... bitweave_equality_bench.o"
+	@echo "... bitweave_equality_bench.i"
+	@echo "... bitweave_equality_bench.s"
 	@echo "... bitweave_largescale.o"
 	@echo "... bitweave_largescale.i"
 	@echo "... bitweave_largescale.s"

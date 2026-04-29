@@ -117,6 +117,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/bitweave_simd_bench.dir/DependInfo.cmake"
   "CMakeFiles/bitweave_combined_bench.dir/DependInfo.cmake"
   "CMakeFiles/bitweave_bitmask_bench.dir/DependInfo.cmake"
+  "CMakeFiles/bitweave_equality_bench.dir/DependInfo.cmake"
   "third_party/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "third_party/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"

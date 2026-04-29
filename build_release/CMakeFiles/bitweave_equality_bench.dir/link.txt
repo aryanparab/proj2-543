@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -mavx2 -g -O0 -fno-exceptions -fno-rtti -O3 -DNDEBUG CMakeFiles/bitweave_equality_bench.dir/bitweave_equality_bench.cc.o -o bitweave_equality_bench  libleveldb.a 
